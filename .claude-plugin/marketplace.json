@@ -1,0 +1,201 @@
+{
+  "name": "pngdeity-agent-context",
+  "owner": {
+    "name": "pngdeity",
+    "url": "https://github.com/pngdeity"
+  },
+  "plugins": [
+    {
+      "name": "agent-architect",
+      "description": "Meta-tooling for AI context files — agent-architect skill with knowledge sources and file specifications, context-refinement instruction, update-agents-md prompt, and the Confucius skill extraction agent.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/agent-architect",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "architectural-review",
+      "description": "ADR and TDD writing and auditing workflow with structural, logic, and consistency review phases.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/architectural-review",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "aur-package-management",
+      "description": "Arch Linux AUR package maintenance skills — update packages to new upstream versions, recover from patch failures, and bootstrap new packages.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/aur-package-management",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "automated-modernization",
+      "description": "Blueprint for the Automated Repository Modernization Engine (ARME) — intelligent discovery, staging strategy, and implementation framework.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/automated-modernization",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "ci-cd-standards",
+      "description": "CI/CD pipeline design standards — GitHub Actions best practices, Inversion of Control architecture, CNCF Buildpacks migration reference, and vendor-decoupled CI/CD pipeline design skill.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/ci-cd-standards",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "codecompanion",
+      "description": "CodeCompanion.nvim quick reference and full documentation reference for AI agents working with the Neovim plugin.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/codecompanion",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "config-maintenance",
+      "description": "Configuration file auditing, modernization, and Gemini CLI maintenance guide.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/config-maintenance",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "custom-skill-creator",
+      "description": "Meta-skill for creating and packaging new AI agent skills. Use when creating a skill, documenting a multi-step process, or configuring agent behavior as a skill module.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/custom-skill-creator",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "design-process",
+      "description": "Elon Musk's five-step engineering and design process for driving innovation and eliminating inefficiency.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/design-process",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "design-systems",
+      "description": "Design system references — Hyperstudio (monochrome terminal with amber accents) and 099 (terminal aesthetic digital workbench).",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/design-systems",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "development-practices",
+      "description": "Development standards — conventional commits, technical integrity, engineering workflow, git standards, and code style conventions.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/development-practices",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "freecad-development",
+      "description": "FreeCAD ACP development standards — virtual environment, toolchain, debugging, quality checks, and ACP client implementation.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/freecad-development",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "init-project-guidance",
+      "description": "Scaffold GEMINI.md and AGENTS.md for new or existing projects. Detects tech stack and generates tailored AI agent guidance.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/init-project-guidance",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "normalize-dataset",
+      "description": "Pre-process raw documents (PDFs, transcripts, legacy text) into semantic, LLM-friendly Markdown datasets for RAG and knowledge ingestion.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/normalize-dataset",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "project-management",
+      "description": "Project management integration skill for AI agents — interface with GitHub Projects, TODO.md, and other project management tools.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/project-management",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    },
+    {
+      "name": "technical-documentation",
+      "description": "Architecture Decision Record (ADR) and Technical Design Document authoring workflows with templates, verification checklists, and anti-pattern guidance.",
+      "version": "0.1.0",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/technical-documentation",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
+    }
+  ]
+}
