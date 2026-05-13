@@ -1,0 +1,106 @@
+name: pngdeity-agent-context
+version: 0.1.0
+description: Curated APM marketplace of AI context files for software engineering
+
+marketplace:
+  owner:
+    name: pngdeity
+    url: https://github.com/pngdeity
+  build:
+    tagPattern: "v{version}"
+  packages:
+    - name: agent-architect
+      description: Meta-tooling for AI context files — agent-architect skill with knowledge sources and file specifications, context-refinement instruction, update-agents-md prompt, and the Confucius skill extraction agent.
+      source: pngdeity/apm-user-repository
+      subdir: packages/agent-architect
+      version: "^0.1.0"
+
+    - name: architectural-review
+      description: ADR and TDD writing and auditing workflow with structural, logic, and consistency review phases.
+      source: pngdeity/apm-user-repository
+      subdir: packages/architectural-review
+      version: "^0.1.0"
+
+    - name: aur-package-management
+      description: Arch Linux AUR package maintenance skills — update packages to new upstream versions, recover from patch failures, and bootstrap new packages.
+      source: pngdeity/apm-user-repository
+      subdir: packages/aur-package-management
+      version: "^0.1.0"
+
+    - name: automated-modernization
+      description: Blueprint for the Automated Repository Modernization Engine (ARME) — intelligent discovery, staging strategy, and implementation framework.
+      source: pngdeity/apm-user-repository
+      subdir: packages/automated-modernization
+      version: "^0.1.0"
+
+    - name: ci-cd-standards
+      description: CI/CD pipeline design standards — GitHub Actions best practices, Inversion of Control architecture, CNCF Buildpacks migration reference, and vendor-decoupled CI/CD pipeline design skill.
+      source: pngdeity/apm-user-repository
+      subdir: packages/ci-cd-standards
+      version: "^0.1.0"
+
+    - name: codecompanion
+      description: CodeCompanion.nvim quick reference and full documentation reference for AI agents working with the Neovim plugin.
+      source: pngdeity/apm-user-repository
+      subdir: packages/codecompanion
+      version: "^0.1.0"
+
+    - name: config-maintenance
+      description: Configuration file auditing, modernization, and Gemini CLI maintenance guide.
+      source: pngdeity/apm-user-repository
+      subdir: packages/config-maintenance
+      version: "^0.1.0"
+
+    - name: custom-skill-creator
+      description: Meta-skill for creating and packaging new AI agent skills. Use when creating a skill, documenting a multi-step process, or configuring agent behavior as a skill module.
+      source: pngdeity/apm-user-repository
+      subdir: packages/custom-skill-creator
+      version: "^0.1.0"
+
+    - name: design-process
+      description: Elon Musk's five-step engineering and design process for driving innovation and eliminating inefficiency.
+      source: pngdeity/apm-user-repository
+      subdir: packages/design-process
+      version: "^0.1.0"
+
+    - name: design-systems
+      description: Design system references — Hyperstudio (monochrome terminal with amber accents) and 099 (terminal aesthetic digital workbench).
+      source: pngdeity/apm-user-repository
+      subdir: packages/design-systems
+      version: "^0.1.0"
+
+    - name: development-practices
+      description: Development standards — conventional commits, technical integrity, engineering workflow, git standards, and code style conventions.
+      source: pngdeity/apm-user-repository
+      subdir: packages/development-practices
+      version: "^0.1.0"
+
+    - name: freecad-development
+      description: FreeCAD ACP development standards — virtual environment, toolchain, debugging, quality checks, and ACP client implementation.
+      source: pngdeity/apm-user-repository
+      subdir: packages/freecad-development
+      version: "^0.1.0"
+
+    - name: init-project-guidance
+      description: Scaffold GEMINI.md and AGENTS.md for new or existing projects. Detects tech stack and generates tailored AI agent guidance.
+      source: pngdeity/apm-user-repository
+      subdir: packages/init-project-guidance
+      version: "^0.1.0"
+
+    - name: normalize-dataset
+      description: Pre-process raw documents (PDFs, transcripts, legacy text) into semantic, LLM-friendly Markdown datasets for RAG and knowledge ingestion.
+      source: pngdeity/apm-user-repository
+      subdir: packages/normalize-dataset
+      version: "^0.1.0"
+
+    - name: project-management
+      description: Project management integration skill for AI agents — interface with GitHub Projects, TODO.md, and other project management tools.
+      source: pngdeity/apm-user-repository
+      subdir: packages/project-management
+      version: "^0.1.0"
+
+    - name: technical-documentation
+      description: Architecture Decision Record (ADR) and Technical Design Document authoring workflows with templates, verification checklists, and anti-pattern guidance.
+      source: pngdeity/apm-user-repository
+      subdir: packages/technical-documentation
+      version: "^0.1.0"

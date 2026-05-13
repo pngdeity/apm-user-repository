@@ -1,0 +1,5 @@
+name: agent-architect
+version: 0.1.0
+description: Meta-tooling for writing and maintaining AI context files (AGENTS.md, SKILL.md) — includes agent-architect skill, context-refinement instruction, update-agents-md prompt, and the Confucius skill extraction agent
+type: hybrid
+includes: auto

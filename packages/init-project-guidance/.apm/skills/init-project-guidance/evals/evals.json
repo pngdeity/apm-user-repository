@@ -1,0 +1,36 @@
+{
+  "skill": "init-project-guidance",
+  "version": "1.0.0",
+  "tests": [
+    {
+      "id": "scaffold-js-project",
+      "prompt": "Initialize AI guidance for a new Node.js project at /tmp/test-node-project",
+      "expected": {
+        "files_created": ["GEMINI.md", "AGENTS.md"],
+        "sections_present": ["Core Workflow", "Git Workflow", "Stack-Specific Rules"],
+        "must_contain": ["package.json", "npm", "Node.js"],
+        "must_not_contain": [".csproj", "dotnet"]
+      }
+    },
+    {
+      "id": "merge-existing-gemini",
+      "prompt": "Add AI guidance to a project that already has a GEMINI.md (do not overwrite)",
+      "expected": {
+        "files_modified": ["GEMINI.md"],
+        "sections_present": ["Core Workflow", "Git Workflow", "Stack-Specific Rules"],
+        "must_contain": ["merge", "preserve"],
+        "must_not_contain": ["overwrite"]
+      }
+    },
+    {
+      "id": "scaffold-unknown-stack",
+      "prompt": "Initialize AI guidance for a project with no build system files detected",
+      "expected": {
+        "files_created": ["GEMINI.md", "AGENTS.md"],
+        "sections_present": ["Core Workflow", "Git Workflow"],
+        "must_not_contain": ["Stack-Specific Rules"],
+        "must_contain": ["specify the tech stack"]
+      }
+    }
+  ]
+}

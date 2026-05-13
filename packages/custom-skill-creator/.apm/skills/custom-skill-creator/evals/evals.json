@@ -1,0 +1,34 @@
+{
+  "skill": "custom-skill-creator",
+  "version": "1.0.0",
+  "tests": [
+    {
+      "id": "create-multi-step-skill",
+      "prompt": "Create a skill for deploying static sites: Step 1 validate HTML, Step 2 minify assets, Step 3 upload to S3",
+      "expected": {
+        "files_created": ["SKILL.md"],
+        "sections_present": ["Usage", "Phase 1", "Phase 2", "Verification"],
+        "must_contain": ["mkdir -p skills/deploy-static-site"],
+        "structure": "multi-step workflow passes Decision Heuristic gate"
+      }
+    },
+    {
+      "id": "refuse-atomic-function",
+      "prompt": "Create a skill that runs 'npm audit' and returns the output",
+      "expected": {
+        "files_created": [],
+        "must_contain": ["Refuse skill creation", "Tool", "AGENTS.md"],
+        "structure": "fails Decision Heuristic gate — single atomic function"
+      }
+    },
+    {
+      "id": "validate-passes",
+      "prompt": "Create a skill and validate it passes the compliance checker",
+      "expected": {
+        "files_created": ["SKILL.md"],
+        "must_contain": ["skills-ref validate", "skill-compliance-check"],
+        "structure": "includes validation steps in Phase 3 and Packaging"
+      }
+    }
+  ]
+}

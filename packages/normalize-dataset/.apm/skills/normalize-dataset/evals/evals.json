@@ -1,0 +1,32 @@
+{
+  "skill": "normalize-dataset",
+  "version": "1.0.0",
+  "tests": [
+    {
+      "id": "preprocess-pdf-transcript",
+      "prompt": "Normalize this PDF transcript to structured Markdown: [raw OCR text with page numbers, headers, and body text interspersed]",
+      "expected": {
+        "must_contain": ["## ", "### "],
+        "must_not_contain": ["Page 1", "Page 2"],
+        "structure": "headers extracted, page markers stripped, body text preserved"
+      }
+    },
+    {
+      "id": "handle-legacy-plaintext",
+      "prompt": "Normalize this legacy plaintext document with no headers or structure",
+      "expected": {
+        "sections_present": ["Description"],
+        "must_contain": ["no structural markup detected"],
+        "structure": "wraps content in a single section with a note about missing structure"
+      }
+    },
+    {
+      "id": "handle-empty-input",
+      "prompt": "Normalize this document: [empty string]",
+      "expected": {
+        "must_contain": ["empty", "no content"],
+        "structure": "returns an error or empty document gracefully without crashing"
+      }
+    }
+  ]
+}

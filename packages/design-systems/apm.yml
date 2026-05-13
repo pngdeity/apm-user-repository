@@ -1,0 +1,5 @@
+name: design-systems
+version: 0.1.0
+description: Design system references — Hyperstudio (monochrome terminal with amber accents) and 099 (terminal aesthetic digital workbench)
+type: hybrid
+includes: auto

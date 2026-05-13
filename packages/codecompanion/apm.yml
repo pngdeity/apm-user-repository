@@ -1,0 +1,5 @@
+name: codecompanion
+version: 0.1.0
+description: CodeCompanion.nvim reference for AI agents
+type: hybrid
+includes: auto

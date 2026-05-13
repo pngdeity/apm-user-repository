@@ -1,0 +1,5 @@
+name: freecad-development
+version: 0.1.0
+description: FreeCAD ACP development standards — virtual environment, toolchain, debugging, quality checks, and ACP client implementation
+type: hybrid
+includes: auto

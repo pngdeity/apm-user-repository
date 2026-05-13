@@ -1,0 +1,5 @@
+name: technical-documentation
+version: 0.1.0
+description: Architecture Decision Record (ADR) and Technical Design Document (Micro-Leaf) authoring workflows
+type: skill
+includes: auto

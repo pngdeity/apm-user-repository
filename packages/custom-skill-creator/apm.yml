@@ -1,0 +1,5 @@
+name: custom-skill-creator
+version: 0.1.0
+description: Meta-skill for creating and packaging new AI agent skills. Use when creating a skill, documenting a multi-step process, or configuring agent behavior as a skill module.
+type: skill
+includes: auto

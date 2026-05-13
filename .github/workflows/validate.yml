@@ -1,0 +1,28 @@
+name: Validate marketplace
+
+on:
+  push:
+    paths:
+      - 'packages/**'
+      - 'apm.yml'
+  pull_request:
+    paths:
+      - 'packages/**'
+      - 'apm.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup APM CLI
+        uses: microsoft/apm-action@v1
+        with:
+          setup-only: 'true'
+
+      - name: Check marketplace refs resolve
+        run: apm marketplace check
+
+      - name: Validate marketplace.json generation
+        run: apm pack --dry-run

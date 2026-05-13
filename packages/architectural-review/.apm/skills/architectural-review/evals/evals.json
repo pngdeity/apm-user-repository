@@ -1,0 +1,32 @@
+{
+  "skill": "architectural-review",
+  "version": "1.0.0",
+  "tests": [
+    {
+      "id": "generate-adr",
+      "prompt": "Write an Architecture Decision Record for adopting PostgreSQL as the primary database for a web application",
+      "expected": {
+        "sections_present": ["Title", "Status", "Context", "Decision", "Consequences"],
+        "must_contain": ["PostgreSQL", "trade-offs", "alternatives"],
+        "must_not_contain": []
+      }
+    },
+    {
+      "id": "audit-existing-adr",
+      "prompt": "Review this ADR for correctness: 'Title: Use MongoDB. Status: Accepted. Decision: We will use MongoDB because it's fast.'",
+      "expected": {
+        "must_contain": ["missing", "Context", "Consequences", "alternatives"],
+        "structure": "identifies at least 3 missing sections"
+      }
+    },
+    {
+      "id": "handle-ambiguous-decision",
+      "prompt": "Write a TDD for choosing between monolith and microservices for a startup with 2 developers",
+      "expected": {
+        "sections_present": ["Context", "Decision"],
+        "must_contain": ["trade-off", "team size", "complexity"],
+        "structure": "acknowledges ambiguity and recommends based on constraints"
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+name: config-maintenance
+version: 0.1.0
+description: Configuration file auditing, modernization, and Gemini CLI maintenance guide
+type: hybrid
+includes: auto
