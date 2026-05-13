@@ -13,8 +13,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/agent-architect",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -25,8 +25,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/architectural-review",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -37,8 +37,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/aur-package-management",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -49,8 +49,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/automated-modernization",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -61,8 +61,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/ci-cd-standards",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -73,8 +73,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/codecompanion",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -85,8 +85,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/config-maintenance",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -97,8 +97,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/custom-skill-creator",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -109,8 +109,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/design-process",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -121,8 +121,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/design-systems",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -133,8 +133,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/development-practices",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -145,8 +145,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/freecad-development",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -157,8 +157,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/init-project-guidance",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -169,8 +169,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/normalize-dataset",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -181,8 +181,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/project-management",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     },
     {
@@ -193,8 +193,8 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/technical-documentation",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
     }
   ]
