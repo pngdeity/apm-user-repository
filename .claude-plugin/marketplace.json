@@ -196,6 +196,39 @@
         "ref": "v0.2.0",
         "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
+    },
+    {
+      "name": "skill-eval-pipeline",
+      "description": "Multi-agent orchestration pipeline for evaluating and optimizing AI agent SKILL.md files — structural validation, trigger testing across opencode and gemini CLI, output quality measurement with graded assertions, automated revision synthesis, and best-candidate selection",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/skill-eval-pipeline",
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+      }
+    },
+    {
+      "name": "skill-eval-agents",
+      "description": "Seven specialized sub-agent skills and Go CLI tools for autonomous skill evaluation — struct-validator, trigger-evaluator, trigger-aggregator, quality-evaluator, output-grader, revision-synthesizer, and candidate-selector with bundled Go scripts for CLI invocation, session parsing, benchmark computation, and candidate selection",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/skill-eval-agents",
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+      }
+    },
+    {
+      "name": "context-quality-gate",
+      "description": "CI/CD quality gate skill for AI agent context files — enforces structural compliance via skills-ref, trigger accuracy thresholds, and output quality minimums before allowing skill publication through automated PR checks",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/context-quality-gate",
+        "ref": "v0.2.0",
+        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+      }
     }
   ]
 }

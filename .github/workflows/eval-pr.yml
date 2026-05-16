@@ -1,0 +1,79 @@
+name: Eval context files
+
+on:
+  pull_request:
+    paths:
+      - 'packages/**'
+  workflow_dispatch:
+    inputs:
+      skill_paths:
+        description: 'Comma-separated paths to skill directories to evaluate'
+        required: true
+        type: string
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+          cache: false
+
+      - name: Setup just
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+
+      - name: Build Go eval tools
+        run: just build-eval
+
+      - name: Setup opencode CLI
+        run: |
+          curl -fsSL https://opencode.ai/install.sh | sh
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+
+      - name: Setup Gemini CLI
+        run: npm install -g @google/gemini-cli
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Setup APM CLI
+        uses: microsoft/apm-action@v1
+        with:
+          setup-only: 'true'
+
+      - name: Install skills-ref
+        run: npm install -g skills-ref
+
+      - name: Discover changed skill directories
+        id: discover
+        run: |
+          if [ -n "${{ inputs.skill_paths }}" ]; then
+            echo "skills=${{ inputs.skill_paths }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "skills=auto" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run eval pipeline
+        run: just eval-skill "${{ steps.discover.outputs.skills }}"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: skill-eval-report
+          path: '**/benchmark.json'
+          if-no-files-found: warn
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: skill-eval-selected
+          path: '**/selected.json'
+          if-no-files-found: warn
+
+      - name: Quality gate
+        run: just eval-gate-check

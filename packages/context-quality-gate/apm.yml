@@ -1,0 +1,5 @@
+name: context-quality-gate
+version: 0.2.0
+description: CI/CD quality gate for AI agent context files — enforces structural compliance, trigger accuracy, and output quality thresholds before allowing skill publication
+type: skill
+includes: auto
