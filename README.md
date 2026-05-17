@@ -32,3 +32,7 @@ apm compile
 | **normalize-dataset** | skill | Pre-process raw documents into LLM-friendly Markdown datasets |
 | **project-management** | skill | Project management integration — GitHub Projects, TODO.md, issue trackers |
 | **technical-documentation** | skill | ADR and Technical Design Document authoring with templates and checklists |
+| **skill-eval-pipeline** | hybrid | Multi-agent orchestration pipeline for evaluating and optimizing SKILL.md files |
+| **skill-eval-agents** | hybrid | Seven specialized sub-agent skills and Go CLI tools for autonomous skill evaluation |
+| **context-quality-gate** | skill | CI/CD quality gate for AI agent context files — structural compliance, trigger accuracy, output quality |
+| **ai-agent-orchestration** | skill | AI agent orchestration design patterns, production best practices, and multi-agent coordination workflows |

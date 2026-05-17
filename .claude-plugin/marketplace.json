@@ -229,6 +229,17 @@
         "ref": "v0.2.0",
         "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
       }
+    },
+    {
+      "name": "ai-agent-orchestration",
+      "description": "AI agent orchestration design patterns, production best practices, and multi-agent coordination workflows — sequential, concurrent, group chat, handoff, and magentic patterns with decision matrix, production hardening checklist from Google AI Agent Clinic, and practical orchestration workflow from the Cyrus case study.",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/ai-agent-orchestration",
+        "ref": "v0.3.0",
+        "sha": "b7ada6e155a83d90d33bcc0448c56e86e704afd0"
+      }
     }
   ]
 }
