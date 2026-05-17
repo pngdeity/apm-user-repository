@@ -1,5 +1,5 @@
 name: pngdeity-agent-context
-version: 0.2.0
+version: 0.3.0
 description: Curated APM marketplace of AI context files for software engineering
 
 marketplace:
@@ -122,3 +122,9 @@ marketplace:
       source: pngdeity/apm-user-repository
       subdir: packages/context-quality-gate
       version: "^0.2.0"
+
+    - name: ai-agent-orchestration
+      description: AI agent orchestration design patterns, production best practices, and multi-agent coordination workflows — sequential, concurrent, group chat, handoff, and magentic patterns with decision matrix, production hardening checklist from Google AI Agent Clinic, and practical orchestration workflow from the Cyrus case study.
+      source: pngdeity/apm-user-repository
+      subdir: packages/ai-agent-orchestration
+      version: "^0.3.0"
