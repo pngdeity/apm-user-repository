@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"gopkg.in/yaml.v3"
@@ -15,28 +16,40 @@ import (
 
 type rootConfig struct {
 	Marketplace struct {
-		Packages []struct {
-			Name   string `yaml:"name"`
-			Source string `yaml:"source"`
-			Subdir string `yaml:"subdir"`
-			Ref    string `yaml:"ref"`
-		} `yaml:"packages"`
+		Packages []pkgEntry `yaml:"packages"`
 	} `yaml:"marketplace"`
 }
 
+type pkgEntry struct {
+	Name   string `yaml:"name"`
+	Source string `yaml:"source"`
+	Subdir string `yaml:"subdir"`
+	Ref    string `yaml:"ref"`
+}
+
+type marketplaceJSON struct {
+	Plugins []struct {
+		Name   string `json:"name"`
+		Source struct {
+			SHA string `json:"sha"`
+		} `json:"source"`
+	} `json:"plugins"`
+}
+
 type compareResponse struct {
-	Status string `json:"status"`
-	Files  []struct {
-		Filename string `json:"filename"`
-		Status   string `json:"status"`
-	} `json:"files"`
+	Status  string `json:"status"`
 	Commits []struct {
 		SHA    string `json:"sha"`
 		Commit struct {
 			Message string `json:"message"`
 		} `json:"commit"`
 	} `json:"commits"`
+	Files []struct {
+		Filename string `json:"filename"`
+	} `json:"files"`
 }
+
+var shaPattern = regexp.MustCompile(`^[a-f0-9]{40}$`)
 
 func main() {
 	os.Exit(run())
@@ -65,6 +78,9 @@ func run() int {
 		return 1
 	}
 
+	mktPath := filepath.Join(repo, ".claude-plugin", "marketplace.json")
+	mktSHA := readMarketplaceSHA(mktPath)
+
 	selfSource := "pngdeity/apm-user-repository"
 	staleCount := 0
 	fixedCount := 0
@@ -80,32 +96,20 @@ func run() int {
 			continue
 		}
 
-		newSHA, err := checkUpstream(pkg.Source, pkg.Subdir, pkg.Ref)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "[err]   %s: %v\n", pkg.Name, err)
-			staleCount++
-			continue
-		}
+		isSHA := shaPattern.MatchString(pkg.Ref)
 
-		if newSHA == "" || newSHA == pkg.Ref {
-			fmt.Printf("[ok]    %s: ref %s (HEAD, current)\n", pkg.Name, pkg.Ref[:8])
-			continue
-		}
-
-		tag := "[fix]"
-		if *checkOnly {
-			tag = "[stale]"
-		}
-		fmt.Printf("%s %s: %s -> %s  (files changed in %s)\n", tag, pkg.Name, pkg.Ref[:8], newSHA[:8], pkg.Subdir)
-		staleCount++
-
-		if !*checkOnly {
-			newData := replaceRef(string(rootData), pkg.Ref, newSHA)
-			if err := os.WriteFile(rootPath, []byte(newData), 0644); err != nil {
-				fmt.Fprintf(os.Stderr, "[err]   %s: cannot write %s: %v\n", pkg.Name, rootPath, err)
+		if isSHA {
+			fixed := handleSHARef(pkg, &rootData, rootPath, checkOnly)
+			if fixed < 0 {
+				staleCount++
 			} else {
-				fixedCount++
-				rootData = []byte(newData)
+				fixedCount += fixed
+			}
+		} else {
+			// Named ref (branch or tag): resolve to SHA, compare against marketplace.json
+			stale := handleNamedRef(pkg, mktSHA)
+			if stale {
+				staleCount++
 			}
 		}
 	}
@@ -124,76 +128,216 @@ func run() int {
 	return 0
 }
 
-func checkUpstream(source, subdir, pinnedSHA string) (string, error) {
+// handleSHARef checks if a commit-SHA-pinned ref is stale (files changed
+// under subdir since the pinned commit). Returns number of fixes (0 or 1)
+// on success, or -1 on error.
+func handleSHARef(pkg pkgEntry, rootData *[]byte, rootPath string, checkOnly *bool) int {
+	newSHA, err := resolveSHARef(pkg.Source, pkg.Subdir, pkg.Ref)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "[err]   %s: %v\n", pkg.Name, err)
+		return -1
+	}
+
+	if newSHA == "" || newSHA == pkg.Ref {
+		fmt.Printf("[ok]    %s: ref %s (HEAD, current)\n", pkg.Name, pkg.Ref[:8])
+		return 0
+	}
+
+	tag := "[fix]"
+	if *checkOnly {
+		tag = "[stale]"
+	}
+	fmt.Printf("%s %s: %s -> %s  (files changed in %s)\n", tag, pkg.Name, pkg.Ref[:8], newSHA[:8], pkg.Subdir)
+
+	if *checkOnly {
+		return 0
+	}
+
+	newData := replaceRef(string(*rootData), pkg.Ref, newSHA)
+	if err := os.WriteFile(rootPath, []byte(newData), 0644); err != nil {
+		fmt.Fprintf(os.Stderr, "[err]   %s: cannot write %s: %v\n", pkg.Name, rootPath, err)
+		return -1
+	}
+	*rootData = []byte(newData)
+	return 1
+}
+
+// handleNamedRef checks if a branch/tag-pinned ref's resolved SHA differs
+// from what was last written into marketplace.json. Returns true if stale.
+func handleNamedRef(pkg pkgEntry, mktSHA map[string]string) bool {
+	parts := strings.Split(pkg.Source, "/")
+	if len(parts) < 2 {
+		fmt.Fprintf(os.Stderr, "[err]   %s: invalid source %q\n", pkg.Name, pkg.Source)
+		return true
+	}
+
+	currentSHA, err := resolveNamedRef(parts[0], parts[1], pkg.Ref)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "[err]   %s: %v\n", pkg.Name, err)
+		return true
+	}
+
+	lastSHA, known := mktSHA[pkg.Name]
+	if !known {
+		fmt.Printf("[info]  %s: new package (no prior marketplace SHA); run apm pack\n", pkg.Name)
+		return true
+	}
+
+	if currentSHA == lastSHA {
+		fmt.Printf("[ok]    %s: ref %s (%s, current)\n", pkg.Name, pkg.Ref, currentSHA[:8])
+		return false
+	}
+
+	fmt.Printf("[stale] %s: %s/%s -> %s  (branch %s moved, run apm pack)\n",
+		pkg.Name, pkg.Ref, lastSHA[:8], currentSHA[:8], pkg.Ref)
+	return true
+}
+
+func resolveSHARef(source, subdir, pinnedSHA string) (string, error) {
 	parts := strings.Split(source, "/")
 	if len(parts) < 2 {
 		return "", fmt.Errorf("invalid source %q (expected owner/repo)", source)
 	}
-	owner := parts[0]
-	repoName := parts[1]
 
 	url := fmt.Sprintf("https://api.github.com/repos/%s/%s/compare/%s...HEAD",
-		owner, repoName, pinnedSHA)
+		parts[0], parts[1], pinnedSHA)
 
-	token := os.Getenv("GITHUB_TOKEN")
-	if token == "" {
-		token = os.Getenv("GH_TOKEN")
-	}
-
-	req, err := http.NewRequest("GET", url, nil)
+	cr, err := fetchCompare(url)
 	if err != nil {
-		return "", fmt.Errorf("cannot create request: %w", err)
-	}
-	req.Header.Set("Accept", "application/vnd.github+json")
-	req.Header.Set("X-GitHub-Api-Version", "2022-11-28")
-	if token != "" {
-		req.Header.Set("Authorization", "Bearer "+token)
-	}
-
-	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		return "", fmt.Errorf("API request failed: %w", err)
-	}
-	defer resp.Body.Close()
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return "", fmt.Errorf("cannot read response: %w", err)
-	}
-
-	if resp.StatusCode == 404 {
-		return "", fmt.Errorf("repo %s not found or ref %s unreachable", source, pinnedSHA[:8])
-	}
-	if resp.StatusCode != 200 {
-		return "", fmt.Errorf("API returned %d: %s", resp.StatusCode, strings.TrimSpace(string(body)))
-	}
-
-	var cr compareResponse
-	if err := json.Unmarshal(body, &cr); err != nil {
-		return "", fmt.Errorf("cannot parse response: %w", err)
+		return "", err
 	}
 
 	if cr.Status == "identical" {
 		return "", nil
 	}
 
-	subdirChanged := false
 	for _, f := range cr.Files {
 		if strings.HasPrefix(f.Filename, subdir+"/") || f.Filename == subdir {
-			subdirChanged = true
-			break
+			if len(cr.Commits) > 0 {
+				return cr.Commits[len(cr.Commits)-1].SHA, nil
+			}
+			return "", fmt.Errorf("subdir %s changed but no commits returned", subdir)
 		}
 	}
 
-	if !subdirChanged {
-		fmt.Printf("        (no changes in %s; %d total commits since pinned)\n", subdir, len(cr.Commits))
-		return "", nil
+	fmt.Printf("        (no changes in %s; %d total commits since pinned)\n", subdir, len(cr.Commits))
+	return "", nil
+}
+
+func resolveNamedRef(owner, repo, ref string) (string, error) {
+	url := fmt.Sprintf("https://api.github.com/repos/%s/%s/git/ref/heads/%s", owner, repo, ref)
+	cr, err := fetchRef(url)
+	if err != nil {
+		url = fmt.Sprintf("https://api.github.com/repos/%s/%s/git/ref/tags/%s", owner, repo, ref)
+		cr, err = fetchRef(url)
+	}
+	if err != nil {
+		return "", fmt.Errorf("cannot resolve ref %q: %w", ref, err)
+	}
+	return cr.SHA, nil
+}
+
+type refResponse struct {
+	Object struct {
+		SHA string `json:"sha"`
+	} `json:"object"`
+	SHA string `json:"sha"`
+}
+
+func fetchRef(url string) (*refResponse, error) {
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("Accept", "application/vnd.github+json")
+	req.Header.Set("X-GitHub-Api-Version", "2022-11-28")
+	setAuth(req)
+
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("API request failed: %w", err)
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
 	}
 
-	if len(cr.Commits) > 0 {
-		return cr.Commits[len(cr.Commits)-1].SHA, nil
+	if resp.StatusCode != 200 {
+		return nil, fmt.Errorf("API returned %d: %s", resp.StatusCode, strings.TrimSpace(string(body)))
 	}
-	return "", fmt.Errorf("subdir %s changed but no commits returned", subdir)
+
+	var rr refResponse
+	if err := json.Unmarshal(body, &rr); err != nil {
+		return nil, err
+	}
+	if rr.Object.SHA != "" {
+		rr.SHA = rr.Object.SHA
+	}
+	return &rr, nil
+}
+
+func fetchCompare(url string) (*compareResponse, error) {
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("Accept", "application/vnd.github+json")
+	req.Header.Set("X-GitHub-Api-Version", "2022-11-28")
+	setAuth(req)
+
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("API request failed: %w", err)
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.StatusCode == 404 {
+		return nil, fmt.Errorf("repo or ref not found (HTTP 404)")
+	}
+	if resp.StatusCode != 200 {
+		return nil, fmt.Errorf("API returned %d: %s", resp.StatusCode, strings.TrimSpace(string(body)))
+	}
+
+	var cr compareResponse
+	if err := json.Unmarshal(body, &cr); err != nil {
+		return nil, err
+	}
+	return &cr, nil
+}
+
+func setAuth(req *http.Request) {
+	token := os.Getenv("GITHUB_TOKEN")
+	if token == "" {
+		token = os.Getenv("GH_TOKEN")
+	}
+	if token != "" {
+		req.Header.Set("Authorization", "Bearer "+token)
+	}
+}
+
+func readMarketplaceSHA(path string) map[string]string {
+	m := make(map[string]string)
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return m
+	}
+	var mkt marketplaceJSON
+	if err := json.Unmarshal(data, &mkt); err != nil {
+		return m
+	}
+	for _, p := range mkt.Plugins {
+		if p.Source.SHA != "" {
+			m[p.Name] = p.Source.SHA
+		}
+	}
+	return m
 }
 
 func replaceRef(content, oldRef, newRef string) string {

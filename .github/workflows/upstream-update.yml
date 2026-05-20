@@ -24,20 +24,20 @@ jobs:
       - name: Check for upstream ref updates
         id: update
         run: |
-          go run ./cmd/check-upstream
-          changed=0
-          git diff --name-only -- apm.yml | grep -q . && changed=1
-          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+          stale=0
+          go run ./cmd/check-upstream || stale=1
+          echo "stale=$stale" >> "$GITHUB_OUTPUT"
 
-      - name: Regenerate marketplace
-        if: steps.update.outputs.changed == '1'
-        run: apm pack
-
-      - name: Commit and push
-        if: steps.update.outputs.changed == '1'
+      - name: Regenerate marketplace and commit
+        if: steps.update.outputs.stale == '1'
         run: |
+          apm pack
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add apm.yml .claude-plugin/marketplace.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
           git commit -m "chore(deps): bump upstream find-docs ref"
           git push

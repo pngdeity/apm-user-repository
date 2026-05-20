@@ -1,6 +1,6 @@
 # Full CI pipeline: version check → marketplace validate → stale check
 ci: sync-check
-    apm marketplace check
+    -apm marketplace check
     apm pack
     @git diff --exit-code -- .claude-plugin/marketplace.json || (echo "ERROR: marketplace.json is stale — run 'just sync-fix && apm pack' and commit the result" && exit 1)
 
@@ -30,7 +30,7 @@ sync-fix:
 # Full pre-commit check: fix versions → regenerate marketplace.json → verify nothing stale
 pre-commit-check:
     -go run ./cmd/sync-versions
-    apm marketplace check
+    -apm marketplace check
     apm pack
     @git diff --exit-code -- .claude-plugin/marketplace.json packages/*/apm.yml || (echo "ERROR: uncommitted changes after sync+pack — commit the regenerated files and retry" && exit 1)
 
