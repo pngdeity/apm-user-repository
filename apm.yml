@@ -1,5 +1,5 @@
 name: pngdeity-agent-context
-version: 0.3.0
+version: 0.4.0
 description: Curated APM marketplace of AI context files for software engineering
 
 marketplace:
@@ -39,6 +39,12 @@ marketplace:
       subdir: packages/ci-cd-standards
       version: "^0.2.0"
 
+    - name: code-review-commons
+      description: Common guidelines and constraints for performing high-quality code reviews
+      source: pngdeity/apm-user-repository
+      subdir: packages/code-review-commons
+      version: "^0.1.0"
+
     - name: codecompanion
       description: CodeCompanion.nvim quick reference and full documentation reference for AI agents working with the Neovim plugin.
       source: pngdeity/apm-user-repository
@@ -75,6 +81,12 @@ marketplace:
       subdir: packages/development-practices
       version: "^0.2.0"
 
+    - name: find-docs
+      description: Retrieves up-to-date documentation for any library, framework, or tool via Context7 API
+      source: upstash/context7
+      subdir: skills/find-docs
+      ref: 34fda7d9b834cb0362799012bb75155220fb3267
+
     - name: freecad-development
       description: FreeCAD ACP development standards — virtual environment, toolchain, debugging, quality checks, and ACP client implementation.
       source: pngdeity/apm-user-repository
@@ -104,6 +116,12 @@ marketplace:
       source: pngdeity/apm-user-repository
       subdir: packages/technical-documentation
       version: "^0.2.0"
+
+    - name: ssh-gpg-host
+      description: Host-specific SSH and GPG configuration constraints for agent commit signing and authentication
+      source: pngdeity/apm-user-repository
+      subdir: packages/ssh-gpg-host
+      version: "^0.1.0"
 
     - name: skill-eval-pipeline
       description: Multi-agent orchestration pipeline for evaluating and optimizing AI agent SKILL.md files — structural validation, trigger testing across opencode and gemini CLI, output quality measurement with graded assertions, automated revision synthesis, and best-candidate selection

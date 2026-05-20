@@ -1,5 +1,5 @@
 name: architectural-review
-version: 0.1.0
+version: 0.2.0
 description: ADR and TDD writing and auditing workflow with structural, logic, and consistency review phases
 type: skill
 includes: auto

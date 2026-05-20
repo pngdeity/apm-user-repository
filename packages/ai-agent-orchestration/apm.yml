@@ -1,5 +1,7 @@
-name: ai-agent-orchestration
-version: 0.1.0
-description: AI agent orchestration design patterns, production best practices, and multi-agent coordination workflows from Microsoft Azure, Google AI Agent Clinic, and the Cyrus orchestration case study.
-type: skill
+description: AI agent orchestration design patterns, production best practices, and
+  multi-agent coordination workflows from Microsoft Azure, Google AI Agent Clinic,
+  and the Cyrus orchestration case study.
 includes: auto
+name: ai-agent-orchestration
+type: skill
+version: 0.3.0

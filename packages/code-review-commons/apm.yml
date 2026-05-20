@@ -1,0 +1,5 @@
+name: code-review-commons
+version: 0.1.0
+description: Common guidelines and constraints for performing high-quality code reviews
+type: skill
+includes: auto

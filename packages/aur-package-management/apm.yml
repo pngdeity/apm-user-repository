@@ -1,5 +1,5 @@
 name: aur-package-management
-version: 0.1.0
+version: 0.2.0
 description: Arch Linux AUR package maintenance skills — update packages, recover from patch failures, and bootstrap new packages
 type: skill
 includes: auto

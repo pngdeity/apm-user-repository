@@ -1,5 +1,5 @@
 name: init-project-guidance
-version: 0.1.0
+version: 0.2.0
 description: Scaffold GEMINI.md and AGENTS.md for new or existing projects. Detects tech stack and generates tailored AI agent guidance.
 type: skill
 includes: auto

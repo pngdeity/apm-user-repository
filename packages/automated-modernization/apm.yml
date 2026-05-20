@@ -1,5 +1,5 @@
 name: automated-modernization
-version: 0.1.0
+version: 0.2.0
 description: Blueprint for the Automated Repository Modernization Engine (ARME) — intelligent discovery, staging strategy, and implementation framework
 type: instructions
 includes: auto

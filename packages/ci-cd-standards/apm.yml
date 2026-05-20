@@ -1,5 +1,5 @@
 name: ci-cd-standards
-version: 0.1.0
+version: 0.2.0
 description: CI/CD pipeline design standards — GitHub Actions best practices, Inversion of Control architecture, and CNCF Buildpacks reference
 type: hybrid
 includes: auto

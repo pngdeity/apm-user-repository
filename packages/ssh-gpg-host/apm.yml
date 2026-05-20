@@ -1,0 +1,5 @@
+name: ssh-gpg-host
+version: 0.1.0
+description: Host-specific SSH and GPG configuration constraints for agent commit signing and authentication
+type: skill
+includes: auto
