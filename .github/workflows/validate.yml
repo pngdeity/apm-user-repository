@@ -16,13 +16,15 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Setup APM CLI
-        uses: microsoft/apm-action@v1
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.24'
+
+      - uses: extractions/setup-just@v4
+
+      - uses: microsoft/apm-action@v1
         with:
           setup-only: 'true'
 
-      - name: Check marketplace refs resolve
-        run: apm marketplace check
-
-      - name: Validate marketplace.json generation
-        run: apm pack --dry-run
+      - name: Run CI pipeline
+        run: just ci

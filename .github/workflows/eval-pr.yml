@@ -20,17 +20,15 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
         with:
           go-version: '1.24'
-          cache: false
 
-      - name: Setup just
-        run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+      - uses: extractions/setup-just@v4
 
-      - name: Build Go eval tools
-        run: just build-eval
+      - uses: microsoft/apm-action@v1
+        with:
+          setup-only: 'true'
 
       - name: Setup opencode CLI
         run: |
@@ -42,11 +40,6 @@ jobs:
         run: npm install -g @google/gemini-cli
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-
-      - name: Setup APM CLI
-        uses: microsoft/apm-action@v1
-        with:
-          setup-only: 'true'
 
       - name: Install skills-ref
         run: npm install -g skills-ref
@@ -60,8 +53,8 @@ jobs:
             echo "skills=auto" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Run eval pipeline
-        run: just eval-skill "${{ steps.discover.outputs.skills }}"
+      - name: Run CI eval pipeline
+        run: just ci-eval "${{ steps.discover.outputs.skills }}"
 
       - uses: actions/upload-artifact@v7
         with:
@@ -74,6 +67,3 @@ jobs:
           name: skill-eval-selected
           path: '**/selected.json'
           if-no-files-found: warn
-
-      - name: Quality gate
-        run: just eval-gate-check

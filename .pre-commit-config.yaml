@@ -1,0 +1,10 @@
+repos:
+  - repo: local
+    hooks:
+      - id: apm-pre-commit-check
+        name: APM pre-commit check
+        description: Sync package versions to root constraints, validate marketplace, fail on staleness
+        entry: just pre-commit-check
+        language: system
+        files: ^(apm\.yml|packages/.*/apm\.yml|\.claude-plugin/marketplace\.json)$
+        pass_filenames: false

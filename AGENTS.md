@@ -1,10 +1,10 @@
 # AGENTS.md
 
 ## What this repo is
-An APM marketplace of AI agent context files (skills, prompts, agents, instructions) published as 16 packages. No code to build, test, or lint — content-only.
+An Agent Package Manager (APM) marketplace of AI agent context files (skills, prompts, agents, instructions). Content-only — no application code to build or test.
 
 ## Prerequisites
-All commands below require the `apm` CLI. CI installs it via `microsoft/apm-action@v1` with `setup-only: 'true'`.
+All commands below require the `apm` CLI, `go`, and `just`. CI installs them via `microsoft/apm-action@v1`, `actions/setup-go@v5`, and `extractions/setup-just@v2`.
 
 ## Package structure
 Each package lives at `packages/<name>/` and requires:
@@ -16,13 +16,25 @@ Each package lives at `packages/<name>/` and requires:
 - Optional `README.md`
 
 ## Marketplace-level manifest
-Root `apm.yml` declares all 16 packages with `subdir` and `version` constraints. The `version` field here is the **marketplace version** — independent from per-package versions.
+Root `apm.yml` declares all packages with `subdir` and `version` constraints. The `version` field here is the **marketplace version** — independent from per-package versions. Per-package versions must satisfy the caret constraint declared in the root manifest.
 
 ## Verification commands
 Run before committing package changes:
 ```bash
+just pre-commit-check        # syncs versions, validates marketplace, checks for staleness
+```
+
+CI equivalent (read-only, exits non-zero on mismatch):
+```bash
+just ci                      # sync-check → apm marketplace check → apm pack → stale check
+```
+
+Individual steps:
+```bash
+just sync-check              # check package versions satisfy root constraints
+just sync-fix                # auto-bump mismatched package versions
 apm marketplace check        # validates all refs resolve
-apm pack --dry-run           # validates marketplace.json generation
+apm pack --dry-run            # validates marketplace.json generation
 ```
 
 ## Generated file
@@ -34,9 +46,9 @@ Then **commit the updated marketplace.json**. The CI workflow will reject PRs wi
 
 ## Release process
 1. Update root `apm.yml` `version` field
-2. Bump per-package versions in `packages/*/apm.yml` as needed
+2. Run `just sync-fix` to align per-package versions with root constraints
 3. Run `apm pack` to regenerate `.claude-plugin/marketplace.json`
-4. Commit, tag as `v{version}` (e.g. `v0.2.0`)
+4. Commit, tag as `v{version}` (e.g. `v0.3.0`)
 
 ## Ignored directories
 `apm_modules/`, `.apm_cache/`, `build/`, `*.tar.gz`, `handoffs/`, `to-import/` — all gitignored. Never commit content from these.
