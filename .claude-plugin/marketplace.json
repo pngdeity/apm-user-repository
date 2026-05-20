@@ -68,12 +68,13 @@
     {
       "name": "code-review-commons",
       "description": "Common guidelines and constraints for performing high-quality code reviews",
+      "version": "0.4.0",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/code-review-commons",
-        "ref": "v0.4.0",
-        "sha": "851536131924d1c7ae51163adb39838e903bf153"
+        "ref": "v0.4.1",
+        "sha": "7d9b2779253bf3f5d863dc0ec7298207faae9fa3"
       }
     },
     {
@@ -222,12 +223,13 @@
     {
       "name": "ssh-gpg-host",
       "description": "Host-specific SSH and GPG configuration constraints for agent commit signing and authentication",
+      "version": "0.4.0",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/ssh-gpg-host",
-        "ref": "v0.4.0",
-        "sha": "851536131924d1c7ae51163adb39838e903bf153"
+        "ref": "v0.4.1",
+        "sha": "7d9b2779253bf3f5d863dc0ec7298207faae9fa3"
       }
     },
     {
@@ -272,6 +274,17 @@
         "path": "packages/ai-agent-orchestration",
         "ref": "v0.3.0",
         "sha": "b7ada6e155a83d90d33bcc0448c56e86e704afd0"
+      }
+    },
+    {
+      "name": "apm-migration",
+      "description": "6-phase procedural skill for migrating consumer projects to APM — detection, tribal knowledge recovery, scaffolding, install/compile, git operations, and verification",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/apm-migration",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
       }
     }
   ]

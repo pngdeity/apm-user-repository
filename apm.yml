@@ -146,3 +146,9 @@ marketplace:
       source: pngdeity/apm-user-repository
       subdir: packages/ai-agent-orchestration
       version: "^0.3.0"
+
+    - name: apm-migration
+      description: 6-phase procedural skill for migrating consumer projects to APM — detection, tribal knowledge recovery, scaffolding, install/compile, git operations, and verification
+      source: pngdeity/apm-user-repository
+      subdir: packages/apm-migration
+      version: "^0.1.0"

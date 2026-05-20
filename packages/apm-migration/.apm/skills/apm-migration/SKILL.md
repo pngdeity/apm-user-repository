@@ -1,0 +1,203 @@
+---
+name: apm-migration
+description: Migrate consumer projects to APM. Use when asked to "migrate to APM", "add APM to project", "set up APM", or when detecting a repo lacking apm.yml. Covers greenfield and brownfield paths with tribal knowledge recovery from git history.
+allowed-tools: git, apm
+metadata:
+  tags: "migration apm agent-package-manager scaffolding tribal-knowledge greenfield brownfield"
+---
+
+# Skill: APM Migration (`apm-migration`)
+
+Follow this 6-phase procedure when migrating a consumer project to APM. The procedure was validated across 11 project migrations during the May 2026 APM transition.
+
+## Phase 1 — Detect
+
+Determine whether the project is greenfield (no pre-existing AI context files) or brownfield (has `AGENTS.md` or `GEMINI.md`).
+
+```
+Run: ls AGENTS.md GEMINI.md 2>/dev/null
+Run: git ls-files AGENTS.md GEMINI.md 2>/dev/null
+```
+
+- **Both absent (greenfield):** Skip to Phase 3.
+- **Either present (brownfield):** Proceed to Phase 2.
+
+## Phase 2 — Recover (brownfield only)
+
+Recover pre-existing tribal knowledge before scaffolding replaces the generated files.
+
+1. Locate commit history:
+   ```bash
+   git log --oneline -- AGENTS.md GEMINI.md
+   ```
+
+2. Extract content from the most recent commit that contains the file:
+   ```bash
+   git show <sha>:<file> > /tmp/<file>.recovered
+   ```
+
+3. If the file was never committed (untracked, in `.gitignore`, or working-tree only):
+   - Migrate-in-place: copy the file directly into `.apm/instructions/<project>.instructions.md`.
+
+4. Wrap extracted content in YAML frontmatter and write to `.apm/instructions/<project>.instructions.md`:
+   ```markdown
+   ---
+   description: <project> project conventions
+   applyTo: "**"
+   ---
+   # <project> Tribal Knowledge
+   ## Hierarchy (Rule 0)
+   - This file overrides global mandates for this project.
+
+   <original content here>
+   ```
+
+5. If multiple files exist (e.g. both `AGENTS.md` and `GEMINI.md`), merge their content into one instructions file with clear section boundaries. Do not create duplicate instructions.
+
+## Phase 3 — Scaffold
+
+Create the APM manifest and project-level instructions. This phase applies to both greenfield and brownfield paths from this point onward.
+
+### 3.1 Create `apm.yml`
+
+```yaml
+name: <project-name>
+targets:
+  - opencode
+  - copilot
+dependencies:
+  apm: []
+includes: auto
+```
+
+- `<project-name>` must be the repository name in kebab-case.
+- Leave `dependencies.apm` empty — packages are installed in Phase 4.
+- If the project uses additional target harnesses, add them (e.g. `claude`, `gemini`, `codex`).
+
+### 3.2 Create `.apm/instructions/<project>.instructions.md` (if not already present from Phase 2)
+
+```markdown
+---
+description: <project> project conventions
+applyTo: "**"
+---
+# <project> Tribal Knowledge
+## Hierarchy (Rule 0)
+- This file overrides global mandates for this project.
+```
+
+### 3.3 Append APM entries to `.gitignore`
+
+Read the existing `.gitignore` first to preserve all original entries. Then append:
+
+```
+apm_modules/
+.agents/
+.opencode/
+.github/instructions/
+.github/prompts/
+.github/agents/
+.github/hooks/
+.github/copilot-instructions.md
+AGENTS.md
+GEMINI.md
+```
+
+If `.gitignore` does not exist, create it with only the APM block. If the project already has some of these entries, do not duplicate them.
+
+## Phase 4 — Install & Compile
+
+### 4.1 Determine packages
+
+Ask the user which packages to install. If the user defers, detect from project type:
+
+| Project type | Recommended packages |
+|-------------|---------------------|
+| General software | `development-practices`, `ci-cd-standards` |
+| Arch Linux packaging | `development-practices`, `ci-cd-standards`, `aur-package-management` |
+| FreeCAD development | `development-practices`, `freecad-development` |
+| AI context development | `development-practices`, `init-project-guidance`, `custom-skill-creator` |
+
+### 4.2 Install
+
+```bash
+apm install <package>@<marketplace> <package>@<marketplace> ...
+```
+
+If `apm install` exits with code 128 — a known APM bug caused by `--shared` flag on shallow clones (affects APM internals with certain git versions) — use the local-path fallback:
+
+```bash
+git clone https://github.com/pngdeity/apm-user-repository /tmp/apm-marketplace
+apm install /tmp/apm-marketplace/packages/<package> /tmp/apm-marketplace/packages/<other-package>
+rm -rf /tmp/apm-marketplace
+```
+
+### 4.3 Compile
+
+```bash
+apm compile --target opencode,copilot
+```
+
+Add additional `--target` flags for any harnesses declared in `apm.yml`.
+
+If `apm compile` fails, verify that all packages installed successfully and that `apm.yml` targets match the compile flags.
+
+## Phase 5 — Git
+
+### 5.1 Untrack generated files from version control
+
+If `AGENTS.md` or `GEMINI.md` were previously tracked by git:
+
+```bash
+git rm --cached AGENTS.md GEMINI.md
+```
+
+These files are now generated by `apm compile` and must not be committed.
+
+### 5.2 Stage only source files
+
+```bash
+git add apm.yml apm.lock.yaml .gitignore .apm/instructions/
+```
+
+Never stage generated files (`AGENTS.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.github/instructions/`, `.github/prompts/`, `.github/agents/`).
+
+### 5.3 Commit
+
+```bash
+git commit -m "Add APM manifest with <package-list>"
+```
+
+Sign the commit if the project requires signed commits (`git commit -S`).
+
+## Phase 6 — Verify
+
+Run each check and report the result as `[✓]` or `[✗]` with details for any failures.
+
+```
+1. git show --stat HEAD            — only source files committed
+2. cat apm.yml                     — correct targets, includes: auto
+3. cat .gitignore                  — all original entries preserved + APM block
+4. head -30 AGENTS.md              — tribal knowledge present, APM sections present
+5. apm compile --target ...        — exits 0
+6. git status --short              — clean
+```
+
+Expected results:
+
+```
+[✓] git show --stat HEAD            — apm.yml, apm.lock.yaml, .gitignore, .apm/instructions/
+[✓] apm.yml                         — targets opencode, copilot
+[✓] .gitignore                      — original entries preserved + APM block
+[✓] AGENTS.md                       — tribal knowledge + APM sections
+[✓] apm compile --target opencode,copilot — exits 0
+[✓] git status --short              — clean
+```
+
+If any check fails:
+- **Check 1 fails:** Staged generated files. Unstage them with `git reset HEAD <file>`.
+- **Check 2 fails:** Fix `apm.yml` targets and recompile.
+- **Check 3 fails:** Re-append missing APM entries to `.gitignore`.
+- **Check 4 fails:** Verify `.apm/instructions/<project>.instructions.md` contains original content and recompile.
+- **Check 5 fails:** Inspect error output. Common causes: missing dependencies, target mismatch, or malformed `apm.yml`.
+- **Check 6 fails:** Untracked generated files exist. Add them to `.gitignore` or clean with `git clean -fd --exclude=!apm_modules --exclude=!.agents`.
