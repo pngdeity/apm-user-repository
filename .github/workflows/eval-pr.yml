@@ -1,9 +1,6 @@
 name: Eval context files
 
 on:
-  pull_request:
-    paths:
-      - 'packages/**'
   workflow_dispatch:
     inputs:
       skill_paths:
