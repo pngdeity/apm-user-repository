@@ -1,5 +1,5 @@
 name: pngdeity-agent-context
-version: 0.4.0
+version: 0.4.1
 description: Curated APM marketplace of AI context files for software engineering
 
 marketplace:
@@ -43,7 +43,7 @@ marketplace:
       description: Common guidelines and constraints for performing high-quality code reviews
       source: pngdeity/apm-user-repository
       subdir: packages/code-review-commons
-      version: "^0.1.0"
+      version: "^0.4.0"
 
     - name: codecompanion
       description: CodeCompanion.nvim quick reference and full documentation reference for AI agents working with the Neovim plugin.
@@ -121,7 +121,7 @@ marketplace:
       description: Host-specific SSH and GPG configuration constraints for agent commit signing and authentication
       source: pngdeity/apm-user-repository
       subdir: packages/ssh-gpg-host
-      version: "^0.1.0"
+      version: "^0.4.0"
 
     - name: skill-eval-pipeline
       description: Multi-agent orchestration pipeline for evaluating and optimizing AI agent SKILL.md files — structural validation, trigger testing across opencode and gemini CLI, output quality measurement with graded assertions, automated revision synthesis, and best-candidate selection
