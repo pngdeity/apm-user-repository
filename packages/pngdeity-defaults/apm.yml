@@ -1,0 +1,10 @@
+name: pngdeity-defaults
+version: 0.1.0
+description: Default package bundle for pngdeity projects — aggregates development-practices, ci-cd-standards, and code-review-commons
+type: instructions
+includes: auto
+dependencies:
+  apm:
+    - pngdeity/apm-user-repository/packages/development-practices#v0.2.0
+    - pngdeity/apm-user-repository/packages/ci-cd-standards#v0.2.0
+    - pngdeity/apm-user-repository/packages/code-review-commons#v0.4.0

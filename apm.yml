@@ -152,3 +152,9 @@ marketplace:
       source: pngdeity/apm-user-repository
       subdir: packages/apm-migration
       version: "^0.1.0"
+
+    - name: pngdeity-defaults
+      description: Default package bundle for pngdeity projects — aggregates development-practices, ci-cd-standards, and code-review-commons
+      source: pngdeity/apm-user-repository
+      subdir: packages/pngdeity-defaults
+      version: "^0.1.0"

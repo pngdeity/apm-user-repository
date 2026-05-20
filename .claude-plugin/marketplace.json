@@ -286,6 +286,17 @@
         "ref": "v0.1.0",
         "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
       }
+    },
+    {
+      "name": "pngdeity-defaults",
+      "description": "Default package bundle for pngdeity projects — aggregates development-practices, ci-cd-standards, and code-review-commons",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/pngdeity-defaults",
+        "ref": "v0.1.0",
+        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+      }
     }
   ]
 }
