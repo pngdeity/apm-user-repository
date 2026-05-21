@@ -34,6 +34,11 @@ pre-commit-check:
     apm pack
     @git diff --exit-code -- .claude-plugin/marketplace.json packages/*/apm.yml || (echo "ERROR: uncommitted changes after sync+pack — commit the regenerated files and retry" && exit 1)
 
+# Dogfood: install consumed packages and deploy skills
+update-self:
+    apm install
+    @echo "Done. Verify with: git diff apm.lock.yaml"
+
 # Build all Go tools
 build: build-eval build-sync build-check-upstream
 

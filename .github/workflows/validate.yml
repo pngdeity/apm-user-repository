@@ -28,3 +28,9 @@ jobs:
 
       - name: Run CI pipeline
         run: just ci
+
+      - name: Check dogfood lockfile is current
+        run: |
+          apm install
+          git diff --exit-code -- apm.lock.yaml || \
+            (echo "ERROR: apm.lock.yaml is stale — run 'just update-self' and commit" && exit 1)

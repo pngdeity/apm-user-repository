@@ -2,6 +2,13 @@ name: pngdeity-agent-context
 version: 0.4.1
 description: Curated APM marketplace of AI context files for software engineering
 
+targets:
+  - opencode
+dependencies:
+  apm:
+    - ./packages/custom-skill-creator
+    - ./packages/ssh-gpg-host
+
 marketplace:
   owner:
     name: pngdeity

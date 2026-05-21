@@ -1,0 +1,20 @@
+lockfile_version: '1'
+generated_at: '2026-05-21T01:07:57.136365+00:00'
+apm_version: 0.14.1
+dependencies:
+- repo_url: _local/custom-skill-creator
+  package_type: apm_package
+  deployed_files:
+  - .agents/skills/custom-skill-creator
+  source: local
+  local_path: ./packages/custom-skill-creator
+- repo_url: _local/ssh-gpg-host
+  package_type: apm_package
+  deployed_files:
+  - .agents/skills/ssh-gpg-host
+  source: local
+  local_path: ./packages/ssh-gpg-host
+local_deployed_files:
+- .github/instructions/apm-user-repository.instructions.md
+local_deployed_file_hashes:
+  .github/instructions/apm-user-repository.instructions.md: sha256:a9351baf5d6e9fe921eb01fb17b6444da824aa0768df7ebcb55bf7fb2dc482fb

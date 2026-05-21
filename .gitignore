@@ -4,4 +4,12 @@ build/
 *.tar.gz
 handoffs/
 to-import/
+.agents/
+.opencode/
+.github/instructions/
+.github/prompts/
+.github/agents/
+.github/hooks/
+.github/copilot-instructions.md
+GEMINI.md
 
