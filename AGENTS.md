@@ -21,21 +21,26 @@ Root `apm.yml` declares all packages with `subdir` and `version` constraints. Th
 ## Verification commands
 Run before committing package changes:
 ```bash
+just fmt                    # auto-format all YAML files (apm.yml + packages/*/apm.yml)
 just pre-commit-check        # syncs versions, validates marketplace, checks for staleness
 ```
 
 CI equivalent (read-only, exits non-zero on mismatch):
 ```bash
-just ci                      # sync-check → apm marketplace check → apm pack → stale check
+just ci                      # fmt-check → sync-check → apm marketplace check → apm pack → stale check
 ```
 
 Individual steps:
 ```bash
+just fmt-check              # verify YAML files are formatted (yamlfmt -lint)
 just sync-check              # check package versions satisfy root constraints
 just sync-fix                # auto-bump mismatched package versions
 apm marketplace check        # validates all refs resolve
 apm pack --dry-run            # validates marketplace.json generation
 ```
+
+## YAML formatting
+All `apm.yml` files (root + package-level) are formatted with `yamlfmt` (`.yamlfmt` config at repo root). 2-space indent, trailing newline, trimmed whitespace. Run `just fmt` to auto-format or `just fmt-check` to verify in CI.
 
 ## Generated file
 `.claude-plugin/marketplace.json` is **auto-generated** by `apm pack`. After changing any package or the root `apm.yml`, regenerate it:

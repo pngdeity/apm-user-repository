@@ -1,0 +1,5 @@
+name: gh-cli-patterns
+version: 0.1.0
+description: Patterns for invoking the GitHub CLI (gh) from agents. Covers structured output, pagination, repo targeting, search vs list, gh api fallback.
+type: skill
+includes: auto

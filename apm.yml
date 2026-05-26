@@ -1,167 +1,157 @@
 name: pngdeity-agent-context
 version: 0.4.1
 description: Curated APM marketplace of AI context files for software engineering
-
 targets:
   - opencode
 dependencies:
   apm:
     - ./packages/custom-skill-creator
     - ./packages/ssh-gpg-host
-
+    - ./packages/gh-cli-patterns
 marketplace:
   owner:
     name: pngdeity
     url: https://github.com/pngdeity
   build:
-    tagPattern: "v{version}"
+    tagPattern: v{version}
   packages:
     - name: agent-architect
       description: Meta-tooling for AI context files — agent-architect skill with knowledge sources and file specifications, context-refinement instruction, update-agents-md prompt, and the Confucius skill extraction agent.
       source: pngdeity/apm-user-repository
       subdir: packages/agent-architect
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: architectural-review
       description: ADR and TDD writing and auditing workflow with structural, logic, and consistency review phases.
       source: pngdeity/apm-user-repository
       subdir: packages/architectural-review
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: aur-package-management
       description: Arch Linux AUR package maintenance skills — update packages to new upstream versions, recover from patch failures, and bootstrap new packages.
       source: pngdeity/apm-user-repository
       subdir: packages/aur-package-management
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: automated-modernization
       description: Blueprint for the Automated Repository Modernization Engine (ARME) — intelligent discovery, staging strategy, and implementation framework.
       source: pngdeity/apm-user-repository
       subdir: packages/automated-modernization
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: ci-cd-standards
       description: CI/CD pipeline design standards — GitHub Actions best practices, Inversion of Control architecture, CNCF Buildpacks migration reference, and vendor-decoupled CI/CD pipeline design skill.
       source: pngdeity/apm-user-repository
       subdir: packages/ci-cd-standards
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: code-review-commons
       description: Common guidelines and constraints for performing high-quality code reviews
       source: pngdeity/apm-user-repository
       subdir: packages/code-review-commons
-      version: "^0.4.0"
-
+      version: ^0.4.0
     - name: codecompanion
       description: CodeCompanion.nvim quick reference and full documentation reference for AI agents working with the Neovim plugin.
       source: pngdeity/apm-user-repository
       subdir: packages/codecompanion
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: config-maintenance
       description: Configuration file auditing, modernization, and Gemini CLI maintenance guide.
       source: pngdeity/apm-user-repository
       subdir: packages/config-maintenance
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: custom-skill-creator
       description: Meta-skill for creating and packaging new AI agent skills. Use when creating a skill, documenting a multi-step process, or configuring agent behavior as a skill module.
       source: pngdeity/apm-user-repository
       subdir: packages/custom-skill-creator
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: design-process
       description: Elon Musk's five-step engineering and design process for driving innovation and eliminating inefficiency.
       source: pngdeity/apm-user-repository
       subdir: packages/design-process
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: design-systems
       description: Design system references — Hyperstudio (monochrome terminal with amber accents) and 099 (terminal aesthetic digital workbench).
       source: pngdeity/apm-user-repository
       subdir: packages/design-systems
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: development-practices
       description: Development standards — conventional commits, technical integrity, engineering workflow, git standards, and code style conventions.
       source: pngdeity/apm-user-repository
       subdir: packages/development-practices
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: find-docs
       description: Retrieves up-to-date documentation for any library, framework, or tool via Context7 API
-      source: upstash/context7
-      subdir: skills/find-docs
-      ref: 34fda7d9b834cb0362799012bb75155220fb3267
-
+      source: pngdeity/apm-user-repository
+      subdir: packages/find-docs
+      version: ^0.1.0
     - name: freecad-development
       description: FreeCAD ACP development standards — virtual environment, toolchain, debugging, quality checks, and ACP client implementation.
       source: pngdeity/apm-user-repository
       subdir: packages/freecad-development
-      version: "^0.2.0"
-
+      version: ^0.2.0
+    - name: gh-cli-patterns
+      description: Patterns for invoking the GitHub CLI (gh) from agents — structured output, pagination, repo targeting, search vs list, and gh api fallback.
+      source: pngdeity/apm-user-repository
+      subdir: packages/gh-cli-patterns
+      version: ^0.1.0
     - name: init-project-guidance
       description: Scaffold GEMINI.md and AGENTS.md for new or existing projects. Detects tech stack and generates tailored AI agent guidance.
       source: pngdeity/apm-user-repository
       subdir: packages/init-project-guidance
-      version: "^0.2.0"
-
+      version: ^0.2.0
+    - name: local-first
+      description: Discover and use local information sources (man pages, --help, apropos, info, system logs, kernel params) before reaching for external documentation. Applies when the agent queries installed CLI tools, system utilities, or infrastructure commands.
+      source: pngdeity/apm-user-repository
+      subdir: packages/local-first
+      version: ^0.1.0
     - name: normalize-dataset
       description: Pre-process raw documents (PDFs, transcripts, legacy text) into semantic, LLM-friendly Markdown datasets for RAG and knowledge ingestion.
       source: pngdeity/apm-user-repository
       subdir: packages/normalize-dataset
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: project-management
       description: Project management integration skill for AI agents — interface with GitHub Projects, TODO.md, and other project management tools.
       source: pngdeity/apm-user-repository
       subdir: packages/project-management
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: technical-documentation
       description: Architecture Decision Record (ADR) and Technical Design Document authoring workflows with templates, verification checklists, and anti-pattern guidance.
       source: pngdeity/apm-user-repository
       subdir: packages/technical-documentation
-      version: "^0.2.0"
-
+      version: ^0.2.0
+    - name: technical-integrity
+      description: Maintain intellectual honesty and technical rigor during software engineering tasks. Use when performing code reviews, responding to peer agent feedback, or defending technical decisions.
+      source: pngdeity/apm-user-repository
+      subdir: packages/technical-integrity
+      version: ^0.1.0
     - name: ssh-gpg-host
       description: Host-specific SSH and GPG configuration constraints for agent commit signing and authentication
       source: pngdeity/apm-user-repository
       subdir: packages/ssh-gpg-host
-      version: "^0.4.0"
-
+      version: ^0.4.0
     - name: skill-eval-pipeline
       description: Multi-agent orchestration pipeline for evaluating and optimizing AI agent SKILL.md files — structural validation, trigger testing across opencode and gemini CLI, output quality measurement with graded assertions, automated revision synthesis, and best-candidate selection
       source: pngdeity/apm-user-repository
       subdir: packages/skill-eval-pipeline
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: skill-eval-agents
       description: Seven specialized sub-agent skills and Go CLI tools for autonomous skill evaluation — struct-validator, trigger-evaluator, trigger-aggregator, quality-evaluator, output-grader, revision-synthesizer, and candidate-selector with bundled Go scripts for CLI invocation, session parsing, benchmark computation, and candidate selection
       source: pngdeity/apm-user-repository
       subdir: packages/skill-eval-agents
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: context-quality-gate
       description: CI/CD quality gate skill for AI agent context files — enforces structural compliance via skills-ref, trigger accuracy thresholds, and output quality minimums before allowing skill publication through automated PR checks
       source: pngdeity/apm-user-repository
       subdir: packages/context-quality-gate
-      version: "^0.2.0"
-
+      version: ^0.2.0
     - name: ai-agent-orchestration
       description: AI agent orchestration design patterns, production best practices, and multi-agent coordination workflows — sequential, concurrent, group chat, handoff, and magentic patterns with decision matrix, production hardening checklist from Google AI Agent Clinic, and practical orchestration workflow from the Cyrus case study.
       source: pngdeity/apm-user-repository
       subdir: packages/ai-agent-orchestration
-      version: "^0.3.0"
-
+      version: ^0.3.0
     - name: apm-migration
       description: 6-phase procedural skill for migrating consumer projects to APM — detection, tribal knowledge recovery, scaffolding, install/compile, git operations, and verification
       source: pngdeity/apm-user-repository
       subdir: packages/apm-migration
-      version: "^0.1.0"
-
+      version: ^0.1.0
     - name: pngdeity-defaults
       description: Default package bundle for pngdeity projects — aggregates development-practices, ci-cd-standards, and code-review-commons
       source: pngdeity/apm-user-repository
       subdir: packages/pngdeity-defaults
-      version: "^0.1.0"
+      version: ^0.1.0

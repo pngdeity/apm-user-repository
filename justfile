@@ -1,5 +1,13 @@
-# Full CI pipeline: version check → marketplace validate → stale check
-ci: sync-check
+# Format all YAML files
+fmt:
+    yamlfmt
+
+# Check YAML formatting (CI mode, read-only)
+fmt-check:
+    yamlfmt -lint
+
+# Full CI pipeline: format check → version check → marketplace validate → stale check
+ci: fmt-check sync-check
     -apm marketplace check
     apm pack
     @git diff --exit-code -- .claude-plugin/marketplace.json || (echo "ERROR: marketplace.json is stale — run 'just sync-fix && apm pack' and commit the result" && exit 1)
@@ -27,8 +35,9 @@ sync-check:
 sync-fix:
     @go run ./cmd/sync-versions
 
-# Full pre-commit check: fix versions → regenerate marketplace.json → verify nothing stale
+# Full pre-commit check: format → fix versions → regenerate marketplace.json → verify nothing stale
 pre-commit-check:
+    yamlfmt
     -go run ./cmd/sync-versions
     -apm marketplace check
     apm pack

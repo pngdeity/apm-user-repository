@@ -1,0 +1,5 @@
+name: local-first
+version: 0.1.0
+description: Discover and use local information sources (man pages, --help, apropos, info pages, system logs, kernel params) before reaching for external documentation. Apply when the agent is about to use websearch, webfetch, or ctx7 for a question about installed CLI tools, system utilities, or infrastructure commands. Local sources are faster, version-matched, and cost zero context tokens.
+type: skill
+includes: auto

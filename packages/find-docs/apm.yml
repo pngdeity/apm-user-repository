@@ -1,0 +1,5 @@
+name: find-docs
+version: 0.1.0
+description: Retrieves up-to-date documentation for any library, framework, or tool via Context7 API. Use when the agent needs current API references or code examples.
+type: skill
+includes: auto
