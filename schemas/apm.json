@@ -14,7 +14,7 @@
     "version": {
       "type": "string",
       "description": "Semantic version (required). Pattern: ^\\d+\\.\\d+\\.\\d+ (pre-release/build suffixes allowed)",
-      "pattern": "^\\d+\\.\\d+\\.\\d+"
+      "pattern": "^\\d+\\.\\d+\\.\\d+.*$"
     },
     "description": {
       "type": "string",
@@ -352,8 +352,20 @@
       "additionalProperties": true,
       "properties": {
         "owner": {
-          "type": "string",
-          "description": "Marketplace package owner."
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Marketplace owner or organization name."
+            },
+            "url": {
+              "type": "string",
+              "description": "Marketplace owner or organization homepage URL."
+            }
+          },
+          "required": ["name", "url"],
+          "description": "Marketplace package owner information."
         },
         "build": {
           "oneOf": [
