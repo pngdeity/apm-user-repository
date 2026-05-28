@@ -1,5 +1,5 @@
 name: pngdeity-defaults
-version: 0.1.0
+version: 0.4.2
 description: Default package bundle for pngdeity projects — aggregates development-practices, ci-cd-standards, and code-review-commons
 type: instructions
 includes: auto

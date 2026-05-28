@@ -1,5 +1,5 @@
 name: project-management
-version: 0.2.0
+version: 0.4.2
 description: Project management integration skill for AI agents — interface with GitHub Projects, TODO.md, and other project management tools
 type: skill
 includes: auto

@@ -2,4 +2,4 @@ description: AI agent orchestration design patterns, production best practices, 
 includes: auto
 name: ai-agent-orchestration
 type: skill
-version: 0.3.0
+version: 0.4.2

@@ -1,5 +1,5 @@
 name: skill-eval-agents
-version: 0.2.0
+version: 0.4.2
 description: Seven specialized sub-agent skills and Go CLI tools for the skill eval pipeline — structural validation, trigger evaluation, quality evaluation, output grading, revision synthesis, and candidate selection
 type: hybrid
 includes: auto

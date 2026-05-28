@@ -1,5 +1,5 @@
 name: apm-migration
-version: 0.1.0
+version: 0.4.2
 description: 6-phase procedural skill for migrating consumer projects to APM — detection, tribal knowledge recovery, scaffolding, install/compile, git operations, and verification
 type: skill
 includes: auto

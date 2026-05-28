@@ -1,5 +1,5 @@
 name: development-practices
-version: 0.2.0
+version: 0.4.2
 description: Development standards — conventional commits, technical integrity, engineering workflow, git standards, code standards
 type: hybrid
 includes: auto

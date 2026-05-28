@@ -1,5 +1,5 @@
 name: technical-integrity
-version: 0.1.0
+version: 0.4.2
 description: Maintain intellectual honesty and technical rigor during software engineering tasks. Use when performing code reviews, responding to peer agent feedback, or defending technical decisions.
 type: skill
 includes: auto

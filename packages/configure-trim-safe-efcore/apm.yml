@@ -1,5 +1,5 @@
 name: configure-trim-safe-efcore
-version: 0.1.0
+version: 0.4.2
 description: Configure Entity Framework Core for reflection-free compilation, Native AOT compatibility, and aggressive assembly trimming in Blazor WebAssembly apps
 type: skill
 includes: auto
