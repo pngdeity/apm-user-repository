@@ -8,360 +8,373 @@
     {
       "name": "agent-architect",
       "description": "Meta-tooling for AI context files — agent-architect skill with knowledge sources and file specifications, context-refinement instruction, update-agents-md prompt, and the Confucius skill extraction agent.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/agent-architect",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "architectural-review",
       "description": "ADR and TDD writing and auditing workflow with structural, logic, and consistency review phases.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/architectural-review",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "aur-package-management",
       "description": "Arch Linux AUR package maintenance skills — update packages to new upstream versions, recover from patch failures, and bootstrap new packages.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/aur-package-management",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "automated-modernization",
       "description": "Blueprint for the Automated Repository Modernization Engine (ARME) — intelligent discovery, staging strategy, and implementation framework.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/automated-modernization",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "ci-cd-standards",
       "description": "CI/CD pipeline design standards — GitHub Actions best practices, Inversion of Control architecture, CNCF Buildpacks migration reference, and vendor-decoupled CI/CD pipeline design skill.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/ci-cd-standards",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "configure-trim-safe-efcore",
       "description": "Configure Entity Framework Core for reflection-free compilation, Native AOT compatibility, and aggressive assembly trimming in Blazor WebAssembly apps",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/configure-trim-safe-efcore",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "code-review-commons",
       "description": "Common guidelines and constraints for performing high-quality code reviews",
-      "version": "0.4.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/code-review-commons",
-        "ref": "v0.4.1",
-        "sha": "7d9b2779253bf3f5d863dc0ec7298207faae9fa3"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "codecompanion",
       "description": "CodeCompanion.nvim quick reference and full documentation reference for AI agents working with the Neovim plugin.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/codecompanion",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "config-maintenance",
       "description": "Configuration file auditing, modernization, and Gemini CLI maintenance guide.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/config-maintenance",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "custom-skill-creator",
       "description": "Meta-skill for creating and packaging new AI agent skills. Use when creating a skill, documenting a multi-step process, or configuring agent behavior as a skill module.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/custom-skill-creator",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "design-process",
       "description": "Elon Musk's five-step engineering and design process for driving innovation and eliminating inefficiency.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/design-process",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "design-systems",
       "description": "Design system references — Hyperstudio (monochrome terminal with amber accents) and 099 (terminal aesthetic digital workbench).",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/design-systems",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "development-practices",
       "description": "Development standards — conventional commits, technical integrity, engineering workflow, git standards, and code style conventions.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/development-practices",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "find-docs",
       "description": "Retrieves up-to-date documentation for any library, framework, or tool via Context7 API",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/find-docs",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "freecad-development",
       "description": "FreeCAD ACP development standards — virtual environment, toolchain, debugging, quality checks, and ACP client implementation.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/freecad-development",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "implement-offline-first-sync",
       "description": "Design offline-first local data storage sync logs with optimistic concurrency to handle SQLite-to-server conflicts",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/implement-offline-first-sync",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "gh-cli-patterns",
       "description": "Patterns for invoking the GitHub CLI (gh) from agents — structured output, pagination, repo targeting, search vs list, and gh api fallback.",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/gh-cli-patterns",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "init-project-guidance",
       "description": "Scaffold GEMINI.md and AGENTS.md for new or existing projects. Detects tech stack and generates tailored AI agent guidance.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/init-project-guidance",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "local-first",
       "description": "Discover and use local information sources (man pages, --help, apropos, info, system logs, kernel params) before reaching for external documentation. Applies when the agent queries installed CLI tools, system utilities, or infrastructure commands.",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/local-first",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "manage-sqlite-wasm-lifecycle",
       "description": "Safely manage SQLite database file lifecycles and DbContext connections during resets, imports, exports, and restores in Blazor WASM sandboxes",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/manage-sqlite-wasm-lifecycle",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "normalize-dataset",
       "description": "Pre-process raw documents (PDFs, transcripts, legacy text) into semantic, LLM-friendly Markdown datasets for RAG and knowledge ingestion.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/normalize-dataset",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "project-management",
       "description": "Project management integration skill for AI agents — interface with GitHub Projects, TODO.md, and other project management tools.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/project-management",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "technical-documentation",
       "description": "Architecture Decision Record (ADR) and Technical Design Document authoring workflows with templates, verification checklists, and anti-pattern guidance.",
-      "version": "0.1.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/technical-documentation",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "technical-integrity",
       "description": "Maintain intellectual honesty and technical rigor during software engineering tasks. Use when performing code reviews, responding to peer agent feedback, or defending technical decisions.",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/technical-integrity",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "ssh-gpg-host",
       "description": "Host-specific SSH and GPG configuration constraints for agent commit signing and authentication",
-      "version": "0.4.0",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/ssh-gpg-host",
-        "ref": "v0.4.1",
-        "sha": "7d9b2779253bf3f5d863dc0ec7298207faae9fa3"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "skill-eval-pipeline",
       "description": "Multi-agent orchestration pipeline for evaluating and optimizing AI agent SKILL.md files — structural validation, trigger testing across opencode and gemini CLI, output quality measurement with graded assertions, automated revision synthesis, and best-candidate selection",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/skill-eval-pipeline",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "skill-eval-agents",
       "description": "Seven specialized sub-agent skills and Go CLI tools for autonomous skill evaluation — struct-validator, trigger-evaluator, trigger-aggregator, quality-evaluator, output-grader, revision-synthesizer, and candidate-selector with bundled Go scripts for CLI invocation, session parsing, benchmark computation, and candidate selection",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/skill-eval-agents",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "context-quality-gate",
       "description": "CI/CD quality gate skill for AI agent context files — enforces structural compliance via skills-ref, trigger accuracy thresholds, and output quality minimums before allowing skill publication through automated PR checks",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/context-quality-gate",
-        "ref": "v0.2.0",
-        "sha": "8c8f53c8468d2f4937028a3506312e5a641d1aae"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "ai-agent-orchestration",
       "description": "AI agent orchestration design patterns, production best practices, and multi-agent coordination workflows — sequential, concurrent, group chat, handoff, and magentic patterns with decision matrix, production hardening checklist from Google AI Agent Clinic, and practical orchestration workflow from the Cyrus case study.",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/ai-agent-orchestration",
-        "ref": "v0.3.0",
-        "sha": "b7ada6e155a83d90d33bcc0448c56e86e704afd0"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "apm-migration",
       "description": "6-phase procedural skill for migrating consumer projects to APM — detection, tribal knowledge recovery, scaffolding, install/compile, git operations, and verification",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/apm-migration",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     },
     {
       "name": "pngdeity-defaults",
       "description": "Default package bundle for pngdeity projects — aggregates development-practices, ci-cd-standards, and code-review-commons",
+      "version": "0.4.2",
       "source": {
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/pngdeity-defaults",
-        "ref": "v0.1.0",
-        "sha": "b9da36528b7ea57f7be79ab47aed8d7615145cc8"
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }
     }
   ]
