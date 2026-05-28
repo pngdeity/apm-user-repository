@@ -1,0 +1,5 @@
+name: manage-sqlite-wasm-lifecycle
+version: 0.1.0
+description: Safely manage SQLite database file lifecycles and DbContext connections during resets, imports, exports, and restores in Blazor WASM sandboxes
+type: skill
+includes: auto

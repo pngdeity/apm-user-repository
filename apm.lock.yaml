@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-05-21T01:07:57.136365+00:00'
+generated_at: '2026-05-28T16:37:20.494810+00:00'
 apm_version: 0.14.1
 dependencies:
 - repo_url: _local/custom-skill-creator
@@ -8,15 +8,18 @@ dependencies:
   - .agents/skills/custom-skill-creator
   source: local
   local_path: ./packages/custom-skill-creator
+  is_dev: true
 - repo_url: _local/gh-cli-patterns
   package_type: apm_package
   deployed_files:
   - .agents/skills/gh-cli-patterns
   source: local
   local_path: ./packages/gh-cli-patterns
+  is_dev: true
 - repo_url: _local/ssh-gpg-host
   package_type: apm_package
   deployed_files:
   - .agents/skills/ssh-gpg-host
   source: local
   local_path: ./packages/ssh-gpg-host
+  is_dev: true

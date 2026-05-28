@@ -4,6 +4,8 @@ description: Curated APM marketplace of AI context files for software engineerin
 targets:
   - opencode
 dependencies:
+  apm: []
+devDependencies:
   apm:
     - ./packages/custom-skill-creator
     - ./packages/ssh-gpg-host
@@ -40,6 +42,11 @@ marketplace:
       source: pngdeity/apm-user-repository
       subdir: packages/ci-cd-standards
       version: ^0.2.0
+    - name: configure-trim-safe-efcore
+      description: Configure Entity Framework Core for reflection-free compilation, Native AOT compatibility, and aggressive assembly trimming in Blazor WebAssembly apps
+      source: pngdeity/apm-user-repository
+      subdir: packages/configure-trim-safe-efcore
+      version: ^0.1.0
     - name: code-review-commons
       description: Common guidelines and constraints for performing high-quality code reviews
       source: pngdeity/apm-user-repository
@@ -85,6 +92,11 @@ marketplace:
       source: pngdeity/apm-user-repository
       subdir: packages/freecad-development
       version: ^0.2.0
+    - name: implement-offline-first-sync
+      description: Design offline-first local data storage sync logs with optimistic concurrency to handle SQLite-to-server conflicts
+      source: pngdeity/apm-user-repository
+      subdir: packages/implement-offline-first-sync
+      version: ^0.1.0
     - name: gh-cli-patterns
       description: Patterns for invoking the GitHub CLI (gh) from agents — structured output, pagination, repo targeting, search vs list, and gh api fallback.
       source: pngdeity/apm-user-repository
@@ -99,6 +111,11 @@ marketplace:
       description: Discover and use local information sources (man pages, --help, apropos, info, system logs, kernel params) before reaching for external documentation. Applies when the agent queries installed CLI tools, system utilities, or infrastructure commands.
       source: pngdeity/apm-user-repository
       subdir: packages/local-first
+      version: ^0.1.0
+    - name: manage-sqlite-wasm-lifecycle
+      description: Safely manage SQLite database file lifecycles and DbContext connections during resets, imports, exports, and restores in Blazor WASM sandboxes
+      source: pngdeity/apm-user-repository
+      subdir: packages/manage-sqlite-wasm-lifecycle
       version: ^0.1.0
     - name: normalize-dataset
       description: Pre-process raw documents (PDFs, transcripts, legacy text) into semantic, LLM-friendly Markdown datasets for RAG and knowledge ingestion.

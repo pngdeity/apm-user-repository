@@ -1,0 +1,5 @@
+name: implement-offline-first-sync
+version: 0.1.0
+description: Design offline-first local data storage sync logs with optimistic concurrency to handle SQLite-to-server conflicts
+type: skill
+includes: auto
