@@ -9,8 +9,8 @@ test.
 ## Prerequisites
 
 All commands below require the `apm` CLI, `go`, and `just`. CI installs them via
-`microsoft/apm-action@v1`, `actions/setup-go@v5`, and
-`extractions/setup-just@v2`.
+`microsoft/apm-action@v1`, `actions/setup-go@v6`, and
+`extractions/setup-just@v4`.
 
 ## Package structure
 
@@ -44,7 +44,7 @@ just pre-commit-check        # syncs versions, validates marketplace, checks for
 CI equivalent (read-only, exits non-zero on mismatch):
 
 ```bash
-just ci                      # fmt-check → sync-check → apm marketplace check → apm pack → stale check
+just ci                      # fmt-check → sync-check → yaml-validate → apm marketplace check → apm pack → stale check
 ```
 
 Individual steps:
@@ -53,6 +53,7 @@ Individual steps:
 just fmt-check              # verify YAML files are formatted (yamlfmt -lint)
 just sync-check              # check package versions satisfy root constraints
 just sync-fix                # auto-bump mismatched package versions
+just yaml-validate           # validate apm.yml files against JSON Schema (schemas/apm.json)
 apm marketplace check        # validates all refs resolve
 apm pack --dry-run            # validates marketplace.json generation
 ```
