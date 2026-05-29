@@ -1,0 +1,5 @@
+name: microsoft-rust-guidelines
+version: 0.4.2
+description: Microsoft's Pragmatic Rust Guidelines — safety-critical rules enforced implicitly, plus an invocable skill covering universal conventions, library design (interop, UX, resilience, building), applications, FFI, performance, documentation, and AI-oriented design
+type: hybrid
+includes: auto
