@@ -1,10 +1,8 @@
 name: Update upstream dependencies
-
 on:
   schedule:
     - cron: '0 6 * * 1'
   workflow_dispatch:
-
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -12,25 +10,21 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v6
-
       - uses: actions/setup-go@v6
         with:
-          go-version: '1.24'
-
+          go-version: '1.26'
       - uses: microsoft/apm-action@v1
         with:
           setup-only: 'true'
-
       - name: Check for upstream ref updates
         id: update
         run: |
           stale=0
           go run ./cmd/check-upstream || stale=1
           echo "stale=$stale" >> "$GITHUB_OUTPUT"
-
       - name: Regenerate marketplace and commit
         if: steps.update.outputs.stale == '1'
-        run: |
+        run: |-
           apm pack
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

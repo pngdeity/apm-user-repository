@@ -1,5 +1,4 @@
 name: Eval context files
-
 on:
   workflow_dispatch:
     inputs:
@@ -7,7 +6,6 @@ on:
         description: 'Comma-separated paths to skill directories to evaluate'
         required: true
         type: string
-
 jobs:
   eval:
     runs-on: ubuntu-latest
@@ -16,31 +14,24 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v6
-
       - uses: actions/setup-go@v6
         with:
-          go-version: '1.24'
-
+          go-version: '1.26'
       - uses: extractions/setup-just@v4
-
       - uses: microsoft/apm-action@v1
         with:
           setup-only: 'true'
-
       - name: Setup opencode CLI
         run: |
           curl -fsSL https://opencode.ai/install.sh | sh
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-
       - name: Setup Gemini CLI
         run: npm install -g @google/gemini-cli
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-
       - name: Install skills-ref
         run: npm install -g skills-ref
-
       - name: Discover changed skill directories
         id: discover
         run: |
@@ -49,16 +40,13 @@ jobs:
           else
             echo "skills=auto" >> "$GITHUB_OUTPUT"
           fi
-
       - name: Run CI eval pipeline
         run: just ci-eval "${{ steps.discover.outputs.skills }}"
-
       - uses: actions/upload-artifact@v7
         with:
           name: skill-eval-report
           path: '**/benchmark.json'
           if-no-files-found: warn
-
       - uses: actions/upload-artifact@v7
         with:
           name: skill-eval-selected
