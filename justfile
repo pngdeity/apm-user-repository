@@ -6,8 +6,8 @@ fmt:
 fmt-check:
     yamlfmt -lint
 
-# Full CI pipeline: format check → version check → marketplace validate → stale check
-ci: fmt-check sync-check
+# Full CI pipeline: format check → version check → schema validate → marketplace validate → stale check
+ci: fmt-check sync-check yaml-validate
     -apm marketplace check
     apm pack
     @git diff --exit-code -- .claude-plugin/marketplace.json || (echo "ERROR: marketplace.json is stale — run 'just sync-fix && apm pack' and commit the result" && exit 1)
@@ -22,6 +22,11 @@ ci-eval skill_paths:
 eval-skill skill_paths:
     @echo "Running eval pipeline on {{skill_paths}}"
 
+# Validate apm.yml files against the APM JSON Schema
+yaml-validate:
+    @command -v check-jsonschema >/dev/null 2>&1 || { echo "ERROR: check-jsonschema not installed (extra/check-jsonschema or pip install check-jsonschema)" >&2; exit 1; }
+    check-jsonschema --schemafile schemas/apm.json apm.yml packages/*/apm.yml
+
 # APM marketplace validation (dry-run, for quick local checks)
 validate:
     apm marketplace check
@@ -35,10 +40,11 @@ sync-check:
 sync-fix:
     @go run ./cmd/sync-versions
 
-# Full pre-commit check: format → fix versions → regenerate marketplace.json → verify nothing stale
+# Full pre-commit check: format → fix versions → schema validate → marketplace validate → regenerate marketplace.json → verify nothing stale
 pre-commit-check:
     yamlfmt
     -go run ./cmd/sync-versions
+    -just yaml-validate
     -apm marketplace check
     apm pack
     @git diff --exit-code -- .claude-plugin/marketplace.json packages/*/apm.yml || (echo "ERROR: uncommitted changes after sync+pack — commit the regenerated files and retry" && exit 1)

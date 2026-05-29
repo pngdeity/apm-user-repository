@@ -2,396 +2,186 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/pngdeity/apm-user-repository/main/schemas/apm.json",
   "title": "APM Manifest Schema",
-  "description": "JSON Schema for validating apm.yml manifest files (draft-07)",
+  "description": "JSON Schema for apm.yml files (both root marketplace manifests and package-level manifests). Permissive by design — unknown fields are allowed.",
   "type": "object",
   "required": ["name", "version"],
-  "additionalProperties": true,
   "properties": {
     "name": {
       "type": "string",
-      "description": "Package identifier (required). Convention: alphanumeric, dots, hyphens, underscores."
+      "description": "Package or marketplace name (required)"
     },
     "version": {
       "type": "string",
-      "description": "Semantic version (required). Pattern: ^\\d+\\.\\d+\\.\\d+ (pre-release/build suffixes allowed)",
-      "pattern": "^\\d+\\.\\d+\\.\\d+.*$"
+      "description": "SemVer version string (required)",
+      "pattern": "^\\d+\\.\\d+\\.\\d+"
     },
     "description": {
       "type": "string",
-      "description": "Brief human-readable description. Inherited by the marketplace block when not overridden."
+      "description": "Human-readable description"
     },
     "author": {
       "type": "string",
-      "description": "Package author or organization."
+      "description": "Package author"
     },
     "license": {
       "type": "string",
-      "description": "SPDX license identifier (e.g. MIT, Apache-2.0)."
-    },
-    "target": {
-      "oneOf": [
-        {
-          "type": "string",
-          "enum": [
-            "vscode",
-            "agents",
-            "copilot",
-            "claude",
-            "cursor",
-            "opencode",
-            "codex",
-            "gemini",
-            "windsurf",
-            "all"
-          ]
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "vscode",
-              "agents",
-              "copilot",
-              "claude",
-              "cursor",
-              "opencode",
-              "codex",
-              "gemini",
-              "windsurf",
-              "all"
-            ]
-          },
-          "minItems": 1
-        }
-      ],
-      "description": "Controls which output targets are generated during compilation, installation, and packing. Auto-detected from folder presence when omitted."
+      "description": "SPDX license identifier"
     },
     "type": {
       "type": "string",
       "enum": ["instructions", "skill", "hybrid", "prompts"],
-      "description": "Declares how the package content is processed during install and compile."
+      "description": "Package content type for compile and install processing"
+    },
+    "targets": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Target platforms (e.g., opencode, claude, copilot)"
+    },
+    "includes": {
+      "description": "Include pattern — 'auto' or list of repo paths"
     },
     "scripts": {
       "type": "object",
-      "additionalProperties": {
-        "type": "string"
-      },
-      "description": "Named shell commands executed via 'apm run <name>'. Script body supports {key} placeholder substitution."
-    },
-    "includes": {
-      "oneOf": [
-        {
-          "type": "string",
-          "enum": ["auto"]
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      ],
-      "description": "Declares which local .apm/ content is published when packing or deploying. 'auto' or explicit path list."
-    },
-    "registries": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "url": {
-            "type": "string",
-            "description": "Base URL (HTTPS or HTTP). No trailing slash required."
-          }
-        },
-        "required": ["url"],
-        "additionalProperties": false
-      },
-      "properties": {
-        "default": {
-          "type": "string",
-          "description": "Name of the default registry entry."
-        }
-      },
-      "description": "Declares REST-based APM registries for the project."
+      "additionalProperties": { "type": "string" },
+      "description": "Named shell commands"
     },
     "dependencies": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "apm": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "description": "String shorthand for git URL, registry ID, or local path."
-              },
-              {
-                "type": "object",
-                "additionalProperties": true,
-                "properties": {
-                  "git": {
-                    "type": "string",
-                    "description": "Clone URL (HTTPS, SSH) or FQDN shorthand, or 'parent' for monorepo sibling."
-                  },
-                  "path": {
-                    "type": "string",
-                    "description": "Virtual path within repo or local filesystem path."
-                  },
-                  "ref": {
-                    "type": "string",
-                    "description": "Git reference: branch, tag, or commit SHA."
-                  },
-                  "alias": {
-                    "type": "string",
-                    "description": "Local alias for the dependency."
-                  },
-                  "id": {
-                    "type": "string",
-                    "description": "Registry package identity (owner/repo)."
-                  },
-                  "version": {
-                    "type": "string",
-                    "description": "Version selector (semver range or opaque)."
-                  },
-                  "registry": {
-                    "oneOf": [
-                      {
-                        "type": "boolean"
-                      },
-                      {
-                        "type": "string"
-                      }
-                    ],
-                    "description": "Registry name or true/false for default registry."
-                  }
-                }
-              }
-            ]
-          },
-          "description": "List of APM package dependencies."
+            "description": "APM dependency reference (string shorthand or object form)"
+          }
         },
         "mcp": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
-                "type": "string",
-                "description": "Registry reference (e.g. io.github.github/github-mcp-server)."
-              },
-              {
-                "type": "object",
-                "additionalProperties": true,
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Server identifier (registry name or custom name)."
-                  },
-                  "transport": {
-                    "type": "string",
-                    "enum": ["stdio", "sse", "http", "streamable-http"],
-                    "description": "Transport protocol (required for self-defined servers)."
-                  },
-                  "env": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    },
-                    "description": "Environment variable overrides. Supports ${VAR}, ${env:VAR}, ${input:<id>} syntax."
-                  },
-                  "args": {
-                    "oneOf": [
-                      {
-                        "type": "object"
-                      },
-                      {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      }
-                    ],
-                    "description": "Variable overrides (object for registry) or positional args (list for self-defined)."
-                  },
-                  "version": {
-                    "type": "string",
-                    "description": "Pin to specific server version."
-                  },
-                  "registry": {
-                    "oneOf": [
-                      {
-                        "type": "boolean"
-                      },
-                      {
-                        "type": "string"
-                      }
-                    ],
-                    "description": "Registry flag or custom registry URL. true=public (default), false=self-defined."
-                  },
-                  "package": {
-                    "type": "string",
-                    "enum": ["npm", "pypi", "oci"],
-                    "description": "Package manager type hint."
-                  },
-                  "headers": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    },
-                    "description": "Custom HTTP headers for remote endpoints. Supports variable syntax."
-                  },
-                  "tools": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of exposed tools (default: [\"*\"] for all)."
-                  },
-                  "url": {
-                    "type": "string",
-                    "description": "Endpoint URL (required for self-defined servers with http/sse/streamable-http)."
-                  },
-                  "command": {
-                    "type": "string",
-                    "description": "Binary path (required for self-defined servers with stdio)."
-                  }
-                },
-                "required": ["name"]
-              }
-            ]
-          },
-          "description": "List of MCP server dependencies."
+            "description": "MCP server reference (string shorthand or object form)"
+          }
         }
       },
-      "description": "Dependency declarations (apm packages and mcp servers)."
+      "description": "Runtime dependencies"
     },
     "devDependencies": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "apm": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "object",
-                "additionalProperties": true
-              }
-            ]
-          },
-          "description": "List of development-only APM package dependencies."
+            "description": "APM dev dependency reference"
+          }
         },
         "mcp": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "object",
-                "additionalProperties": true
-              }
-            ]
-          },
-          "description": "List of development-only MCP server dependencies."
+            "description": "MCP dev dependency reference"
+          }
         }
       },
-      "description": "Development-only dependencies (same structure as dependencies)."
+      "description": "Development-only dependencies (excluded from apm pack)"
     },
     "compilation": {
       "type": "object",
-      "additionalProperties": true,
+      "description": "Compilation settings (strategy, target, output, placement, source_attribution)",
       "properties": {
         "target": {
-          "type": "string",
-          "description": "Compilation target (e.g., vscode, claude)."
+          "description": "Compilation target (string or list of harness slugs)"
         },
         "strategy": {
           "type": "string",
-          "description": "Compilation strategy."
+          "enum": ["distributed", "single-file"],
+          "description": "Compilation strategy"
         },
-        "output": {
-          "type": "string",
-          "description": "Output path or directory."
+        "source_attribution": {
+          "type": "boolean",
+          "description": "Include source attribution comments"
         },
-        "chatmode": {
-          "type": "string",
-          "description": "Chat mode configuration."
+        "exclude": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Glob patterns to exclude from compilation"
+        },
+        "placement": {
+          "type": "object",
+          "description": "Placement configuration (e.g. min_instructions_per_file)",
+          "properties": {
+            "min_instructions_per_file": { "type": "integer" }
+          }
         }
-      },
-      "description": "Compilation settings (target, strategy, output, chatmode fields)."
+      }
     },
     "policy": {
       "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "fetch_failure_default": {
-          "type": "string",
-          "enum": ["warn", "block"],
-          "description": "Posture when no enforceable policy is available (default: warn)."
-        },
-        "hash": {
-          "type": "string",
-          "description": "Pin on the raw bytes of the fetched leaf org policy (format: <algo>:<hex-digest>)."
-        },
-        "hash_algorithm": {
-          "type": "string",
-          "enum": ["sha256", "sha384", "sha512"],
-          "description": "Digest algorithm for policy.hash (default: sha256)."
-        }
-      },
-      "description": "Consumer-side controls for org policy discovery and verification."
+      "description": "Consumer-side policy controls"
     },
     "marketplace": {
       "type": "object",
-      "additionalProperties": true,
+      "description": "Marketplace authoring block (present = this repo publishes a marketplace)",
       "properties": {
         "owner": {
           "type": "object",
-          "additionalProperties": true,
           "properties": {
-            "name": {
-              "type": "string",
-              "description": "Marketplace owner or organization name."
-            },
-            "url": {
-              "type": "string",
-              "description": "Marketplace owner or organization homepage URL."
-            }
+            "name": { "type": "string" },
+            "url": { "type": "string", "format": "uri" }
           },
-          "required": ["name", "url"],
-          "description": "Marketplace package owner information."
+          "required": ["name"]
         },
         "build": {
-          "oneOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "object",
-              "additionalProperties": true
+          "type": "object",
+          "properties": {
+            "tagPattern": { "type": "string" }
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "homepage": { "type": "string", "format": "uri" }
+          }
+        },
+        "outputs": {
+          "type": "object"
+        },
+        "versioning": {
+          "type": "object",
+          "properties": {
+            "strategy": {
+              "type": "string",
+              "enum": ["lockstep", "tag_pattern", "per_package"],
+              "description": "Local-package versioning strategy"
             }
-          ],
-          "description": "Build configuration for marketplace output."
+          }
         },
         "packages": {
-          "oneOf": [
-            {
-              "type": "array"
-            },
-            {
-              "type": "object"
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "source"],
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "source": { "type": "string" },
+              "subdir": { "type": "string" },
+              "version": { "type": "string" },
+              "ref": { "type": "string" },
+              "tags": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "homepage": { "type": "string", "format": "uri" },
+              "author": { "type": "object" },
+              "keywords": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "license": { "type": "string" },
+              "repository": { "type": "string" },
+              "include_prerelease": { "type": "boolean" },
+              "tag_pattern": { "type": "string" }
             }
-          ],
-          "description": "Packages declared in the marketplace."
+          }
         }
-      },
-      "description": "Marketplace authoring metadata (optional; used by 'apm pack')."
+      }
     }
   }
 }
