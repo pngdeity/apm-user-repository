@@ -25,7 +25,8 @@ apm compile
 |---------|------|-------------|
 | **agent-architect** | hybrid | Meta-tooling for AI context files — agent-architect skill with knowledge sources and file specifications, context-refinement instruction, update-agents-md prompt, and the Confucius skill extraction agent. |
 | **ai-agent-orchestration** | skill | AI agent orchestration design patterns, production best practices, and multi-agent coordination workflows — sequential, concurrent, group chat, handoff, and magentic patterns with decision matrix, production hardening checklist from Google AI Agent Clinic, and practical orchestration workflow from the Cyrus case study. |
-| **apm-meta-defaults** | instructions | Default APM meta-authoring bundle — package creation, skill authoring, migration, evaluation pipeline, quality gates, agent orchestration, and project scaffolding |
+| **apm-author-defaults** | instructions | APM package authoring bundle — create packages, design skills, and manage AI context files |
+| **apm-eval-defaults** | instructions | APM skill evaluation bundle — evaluate SKILL.md quality, run multi-agent eval pipelines, and enforce CI quality gates |
 | **apm-migration** | skill | 6-phase procedural skill for migrating consumer projects to APM — detection, tribal knowledge recovery, scaffolding, install/compile, git operations, and verification |
 | **apm-package-author** | skill | Meta-skills for APM package lifecycle — standalone package creation (anatomy, primitive selection, authoring, local verification) and marketplace registration (root apm.yml integration, version constraints, publishing) |
 | **architectural-review** | skill | ADR and TDD writing and auditing workflow with structural, logic, and consistency review phases. |

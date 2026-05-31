@@ -1,0 +1,10 @@
+name: apm-author-defaults
+version: 0.0.1
+description: APM package authoring bundle — create packages, design skills, and manage AI context files
+type: instructions
+includes: auto
+dependencies:
+  apm:
+    - pngdeity/apm-user-repository/packages/apm-package-author#v0.4.2
+    - pngdeity/apm-user-repository/packages/custom-skill-creator#v0.4.2
+    - pngdeity/apm-user-repository/packages/agent-architect#v0.4.2

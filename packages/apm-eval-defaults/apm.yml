@@ -1,0 +1,10 @@
+name: apm-eval-defaults
+version: 0.0.1
+description: APM skill evaluation bundle — evaluate SKILL.md quality, run multi-agent eval pipelines, and enforce CI quality gates
+type: instructions
+includes: auto
+dependencies:
+  apm:
+    - pngdeity/apm-user-repository/packages/skill-eval-pipeline#v0.4.2
+    - pngdeity/apm-user-repository/packages/skill-eval-agents#v0.4.2
+    - pngdeity/apm-user-repository/packages/context-quality-gate#v0.4.2

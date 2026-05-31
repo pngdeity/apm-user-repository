@@ -177,10 +177,15 @@ marketplace:
       source: pngdeity/apm-user-repository
       subdir: packages/apm-migration
       version: ">=0.0.1"
-    - name: apm-meta-defaults
-      description: Default APM meta-authoring bundle — package creation, skill authoring, migration, evaluation pipeline, quality gates, agent orchestration, and project scaffolding
+    - name: apm-author-defaults
+      description: APM package authoring bundle — create packages, design skills, and manage AI context files
       source: pngdeity/apm-user-repository
-      subdir: packages/apm-meta-defaults
+      subdir: packages/apm-author-defaults
+      version: ">=0.0.1"
+    - name: apm-eval-defaults
+      description: APM skill evaluation bundle — evaluate SKILL.md quality, run multi-agent eval pipelines, and enforce CI quality gates
+      source: pngdeity/apm-user-repository
+      subdir: packages/apm-eval-defaults
       version: ">=0.0.1"
     - name: apm-package-author
       description: Meta-skills for APM package lifecycle — standalone package creation (anatomy, primitive selection, authoring, local verification) and marketplace registration (root apm.yml integration, version constraints, publishing)
