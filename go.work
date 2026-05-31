@@ -3,5 +3,6 @@ go 1.24
 use (
 	./cmd/sync-versions
 	./cmd/check-upstream
+	./cmd/readme-sync
 	./packages/skill-eval-agents/.apm/scripts
 )
