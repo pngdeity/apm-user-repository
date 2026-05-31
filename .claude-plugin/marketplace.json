@@ -281,6 +281,17 @@
       }
     },
     {
+      "name": "rust-defaults",
+      "description": "Default Rust development bundle — Microsoft Pragmatic Rust Guidelines with safety-critical rules enforced implicitly and design guidelines on demand",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/rust-defaults",
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
+      }
+    },
+    {
       "name": "technical-documentation",
       "description": "Architecture Decision Record (ADR) and Technical Design Document authoring workflows with templates, verification checklists, and anti-pattern guidance.",
       "version": "0.4.2",
@@ -372,6 +383,17 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/apm-migration",
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
+      }
+    },
+    {
+      "name": "apm-meta-defaults",
+      "description": "Default APM meta-authoring bundle — package creation, skill authoring, migration, evaluation pipeline, quality gates, agent orchestration, and project scaffolding",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/apm-meta-defaults",
         "ref": "v0.4.2",
         "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }

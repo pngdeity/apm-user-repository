@@ -1,0 +1,8 @@
+name: rust-defaults
+version: 0.4.2
+description: Default Rust development bundle — Microsoft Pragmatic Rust Guidelines with safety-critical rules enforced implicitly and design guidelines on demand
+type: instructions
+includes: auto
+dependencies:
+  apm:
+    - pngdeity/apm-user-repository/packages/microsoft-rust-guidelines#v0.4.2

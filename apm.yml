@@ -132,6 +132,11 @@ marketplace:
       source: pngdeity/apm-user-repository
       subdir: packages/project-management
       version: ">=0.0.1"
+    - name: rust-defaults
+      description: Default Rust development bundle — Microsoft Pragmatic Rust Guidelines with safety-critical rules enforced implicitly and design guidelines on demand
+      source: pngdeity/apm-user-repository
+      subdir: packages/rust-defaults
+      version: ">=0.0.1"
     - name: technical-documentation
       description: Architecture Decision Record (ADR) and Technical Design Document authoring workflows with templates, verification checklists, and anti-pattern guidance.
       source: pngdeity/apm-user-repository
@@ -171,6 +176,11 @@ marketplace:
       description: 6-phase procedural skill for migrating consumer projects to APM — detection, tribal knowledge recovery, scaffolding, install/compile, git operations, and verification
       source: pngdeity/apm-user-repository
       subdir: packages/apm-migration
+      version: ">=0.0.1"
+    - name: apm-meta-defaults
+      description: Default APM meta-authoring bundle — package creation, skill authoring, migration, evaluation pipeline, quality gates, agent orchestration, and project scaffolding
+      source: pngdeity/apm-user-repository
+      subdir: packages/apm-meta-defaults
       version: ">=0.0.1"
     - name: apm-package-author
       description: Meta-skills for APM package lifecycle — standalone package creation (anatomy, primitive selection, authoring, local verification) and marketplace registration (root apm.yml integration, version constraints, publishing)

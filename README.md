@@ -25,6 +25,7 @@ apm compile
 |---------|------|-------------|
 | **agent-architect** | hybrid | Meta-tooling for AI context files — agent-architect skill with knowledge sources and file specifications, context-refinement instruction, update-agents-md prompt, and the Confucius skill extraction agent. |
 | **ai-agent-orchestration** | skill | AI agent orchestration design patterns, production best practices, and multi-agent coordination workflows — sequential, concurrent, group chat, handoff, and magentic patterns with decision matrix, production hardening checklist from Google AI Agent Clinic, and practical orchestration workflow from the Cyrus case study. |
+| **apm-meta-defaults** | instructions | Default APM meta-authoring bundle — package creation, skill authoring, migration, evaluation pipeline, quality gates, agent orchestration, and project scaffolding |
 | **apm-migration** | skill | 6-phase procedural skill for migrating consumer projects to APM — detection, tribal knowledge recovery, scaffolding, install/compile, git operations, and verification |
 | **apm-package-author** | skill | Meta-skills for APM package lifecycle — standalone package creation (anatomy, primitive selection, authoring, local verification) and marketplace registration (root apm.yml integration, version constraints, publishing) |
 | **architectural-review** | skill | ADR and TDD writing and auditing workflow with structural, logic, and consistency review phases. |
@@ -51,6 +52,7 @@ apm compile
 | **normalize-dataset** | skill | Pre-process raw documents (PDFs, transcripts, legacy text) into semantic, LLM-friendly Markdown datasets for RAG and knowledge ingestion. |
 | **pngdeity-defaults** | instructions | Default package bundle for pngdeity projects — aggregates development-practices, ci-cd-standards, and code-review-commons |
 | **project-management** | skill | Project management integration skill for AI agents — interface with GitHub Projects, TODO.md, and other project management tools. |
+| **rust-defaults** | instructions | Default Rust development bundle — Microsoft Pragmatic Rust Guidelines with safety-critical rules enforced implicitly and design guidelines on demand |
 | **skill-eval-agents** | hybrid | Seven specialized sub-agent skills and Go CLI tools for autonomous skill evaluation — struct-validator, trigger-evaluator, trigger-aggregator, quality-evaluator, output-grader, revision-synthesizer, and candidate-selector with bundled Go scripts for CLI invocation, session parsing, benchmark computation, and candidate selection |
 | **skill-eval-pipeline** | hybrid | Multi-agent orchestration pipeline for evaluating and optimizing AI agent SKILL.md files — structural validation, trigger testing across opencode and gemini CLI, output quality measurement with graded assertions, automated revision synthesis, and best-candidate selection |
 | **ssh-gpg-host** | skill | Host-specific SSH and GPG configuration constraints for agent commit signing and authentication |

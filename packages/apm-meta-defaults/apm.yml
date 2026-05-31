@@ -1,0 +1,16 @@
+name: apm-meta-defaults
+version: 0.4.2
+description: Default APM meta-authoring bundle — package creation, skill authoring, migration, evaluation pipeline, quality gates, agent orchestration, and project scaffolding
+type: instructions
+includes: auto
+dependencies:
+  apm:
+    - pngdeity/apm-user-repository/packages/apm-package-author#v0.4.2
+    - pngdeity/apm-user-repository/packages/apm-migration#v0.4.2
+    - pngdeity/apm-user-repository/packages/custom-skill-creator#v0.4.2
+    - pngdeity/apm-user-repository/packages/agent-architect#v0.4.2
+    - pngdeity/apm-user-repository/packages/skill-eval-pipeline#v0.4.2
+    - pngdeity/apm-user-repository/packages/skill-eval-agents#v0.4.2
+    - pngdeity/apm-user-repository/packages/context-quality-gate#v0.4.2
+    - pngdeity/apm-user-repository/packages/ai-agent-orchestration#v0.4.2
+    - pngdeity/apm-user-repository/packages/init-project-guidance#v0.4.2
