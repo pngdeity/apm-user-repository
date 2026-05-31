@@ -1,0 +1,5 @@
+name: apm-package-author
+version: 0.4.2
+description: Meta-skills for APM package lifecycle — standalone package creation (anatomy, primitive selection, authoring, local verification) and marketplace registration (root apm.yml integration, version constraints, publishing)
+type: skill
+includes: auto
