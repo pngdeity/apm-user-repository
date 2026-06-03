@@ -6,11 +6,12 @@ fmt:
 fmt-check:
     yamlfmt -lint
 
-# Full CI pipeline: format check → version check → schema validate → readme check → marketplace validate → stale check
+# Full CI pipeline: format check → version check → schema validate → readme check → compile check → marketplace validate → pack gate → outdated check
 ci: fmt-check sync-check yaml-validate sync-readme-check
+    -apm compile --validate
     -apm marketplace check
-    apm pack
-    @git diff --exit-code -- .claude-plugin/marketplace.json || (echo "ERROR: marketplace.json is stale — run 'just sync-fix && apm pack' and commit the result" && exit 1)
+    apm pack --check-versions --check-clean
+    -apm marketplace outdated
 
 # CI pipeline for eval: build go tools → run eval → quality gate
 ci-eval skill_paths:
@@ -53,6 +54,7 @@ pre-commit-check:
 # Dogfood: install consumed packages and deploy skills
 update-self:
     apm install
+    apm prune
     @echo "Done. Verify with: git diff apm.lock.yaml"
 
 # Build all Go tools
@@ -84,6 +86,10 @@ check-upstream:
 # Update upstream external refs to latest commits
 update-upstream:
     @go run ./cmd/check-upstream
+
+# Check marketplace for packages with newer matching tags
+outdated:
+    apm marketplace outdated
 
 # Run APM lockfile integrity + drift audit (CI gate)
 audit:

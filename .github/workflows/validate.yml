@@ -19,6 +19,9 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-go@v6
@@ -28,6 +31,7 @@ jobs:
       - uses: microsoft/apm-action@v1
         with:
           setup-only: 'true'
+          apm-version: '0.16.1'
       - name: Install YAML validation tools
         run: |
           go install github.com/google/yamlfmt/cmd/yamlfmt@latest
@@ -39,3 +43,13 @@ jobs:
           apm install
           git diff --exit-code -- apm.lock.yaml .agents/ || \
             (echo "ERROR: dogfood files are stale — run 'just update-self' and commit" && exit 1)
+      - name: Audit for tampering
+        run: apm audit --ci --no-drift --format sarif --output apm-audit.sarif
+        continue-on-error: true
+        env:
+          GITHUB_APM_PAT: ${{ secrets.APM_PAT }}
+      - name: Upload SARIF to Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        if: success() || failure()
+        with:
+          sarif_file: apm-audit.sarif
