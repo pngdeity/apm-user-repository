@@ -85,6 +85,19 @@ check-upstream:
 update-upstream:
     @go run ./cmd/check-upstream
 
+# Run APM lockfile integrity + drift audit (CI gate)
+audit:
+    apm audit --ci
+
+# Quality gate check for eval pipeline results
+eval-gate-check:
+    @if find . -name "selected.json" -path "*/evals/workspace/*" -exec grep -q '"selected"' {} \; ; then \
+        echo "Selection found — quality gate passed"; \
+    else \
+        echo "ERROR: No selected.json found — quality gate failed"; \
+        exit 1; \
+    fi
+
 # Post PR comment with benchmark results
 eval-post-comment:
     @find . -name "benchmark.json" -path "*/evals/workspace/*" -exec cat {} \; | head -50
@@ -97,9 +110,3 @@ sync-readme:
 # Sync-readme check only (CI mode, read-only)
 sync-readme-check:
     @go run ./cmd/readme-sync --check
-    @if find . -name "selected.json" -path "*/evals/workspace/*" -exec grep -q '"selected"' {} \; ; then \
-        echo "Selection found — quality gate passed"; \
-    else \
-        echo "ERROR: No selected.json found — quality gate failed"; \
-        exit 1; \
-    fi

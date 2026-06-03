@@ -4,7 +4,6 @@ build/
 *.tar.gz
 handoffs/
 to-import/
-.agents/
 .opencode/
 .github/instructions/
 .github/prompts/

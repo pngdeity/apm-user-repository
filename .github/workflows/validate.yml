@@ -37,5 +37,9 @@ jobs:
       - name: Check dogfood lockfile is current
         run: |-
           apm install
-          git diff --exit-code -- apm.lock.yaml || \
-            (echo "ERROR: apm.lock.yaml is stale — run 'just update-self' and commit" && exit 1)
+          git diff --exit-code -- apm.lock.yaml .agents/ || \
+            (echo "ERROR: dogfood files are stale — run 'just update-self' and commit" && exit 1)
+      - name: APM audit (lockfile integrity + drift)
+        run: apm audit --ci --no-drift
+        env:
+          GITHUB_APM_PAT: ${{ secrets.APM_PAT }}

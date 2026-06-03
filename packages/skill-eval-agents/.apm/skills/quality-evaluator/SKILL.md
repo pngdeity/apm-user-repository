@@ -9,7 +9,9 @@ compatibility: Requires Go toolchain and invoke-cli. Runs opencode and gemini in
 
 # Quality Evaluator Skill
 
-Runs test cases through agent CLIs both with and without the target skill loaded, capturing outputs and timing data. This produces the raw material for downstream grading and comparison.
+Runs test cases through agent CLIs both with and without the target skill
+loaded, capturing outputs and timing data. This produces the raw material for
+downstream grading and comparison.
 
 ## Workflow
 
@@ -33,7 +35,8 @@ Read quality eval test cases from `<skill-dir>/evals/evals.json`:
 ]
 ```
 
-`files` (optional): input files to stage in the workspace before running the prompt.
+`files` (optional): input files to stage in the workspace before running the
+prompt.
 
 ### Step 2: Prepare Workspace per Iteration
 
@@ -50,11 +53,14 @@ evals/workspace/quality-results/iteration-<N>/
 │       └── outputs/
 ```
 
-Each run gets a clean workspace — no leftover files, no cached agent state, no prior context. This is mandatory for valid comparison.
+Each run gets a clean workspace — no leftover files, no cached agent state, no
+prior context. This is mandatory for valid comparison.
 
 ### Step 3: Stage Input Files
 
-For test cases that specify `files`, copy the referenced files into the workspace directory before invoking the CLI. Files are relative to `<skill-dir>/evals/`.
+For test cases that specify `files`, copy the referenced files into the
+workspace directory before invoking the CLI. Files are relative to
+`<skill-dir>/evals/`.
 
 ### Step 4: Run With Skill
 
@@ -70,17 +76,15 @@ go run ./cmd/invoke-cli \
 
 ### Step 5: Run Without Skill
 
-Invoke the CLI with the skill directory explicitly excluded from the agent's scope:
+Invoke the CLI without providing a skill path — omit the `--skill` flag so the
+agent does not discover or load the target skill:
 
 ```bash
 go run ./cmd/invoke-cli \
   --cli <opencode|gemini> \
   --prompt "<prompt>" \
-  --workspace evals/workspace/quality-results/iteration-<N>/eval-<id>/without_skill/workspace \
-  --no-skill
+  --workspace evals/workspace/quality-results/iteration-<N>/eval-<id>/without_skill/workspace
 ```
-
-The `--no-skill` flag ensures the agent does not discover or load the target skill.
 
 ### Step 6: Capture Outputs
 
@@ -91,7 +95,7 @@ For each run, save:
 - Timing data to `<run>/outputs/timing.json`:
   ```json
   {
-    "token_count": {"input": 500, "output": 1200},
+    "token_count": { "input": 500, "output": 1200 },
     "duration_ms": 8500
   }
   ```
@@ -99,27 +103,46 @@ For each run, save:
 ### Step 7: Handle Errors
 
 If the agent produces an error, capture the error output rather than aborting:
+
 - Save error text to `<run>/outputs/error.txt`
 - Still capture any partial outputs
 - Note the error in timing.json with `"error": true`
 
 ## Gotchas
 
-- **Clean context per run is mandatory**: Reusing sessions or workspaces across runs will contaminate results. Always use `--new-session` or equivalent flags. The gemini CLI in particular may hold context across invocations unless explicitly reset.
-- **gemini needs `--new-session` flag**: Without `--new-session`, gemini carries forward prior conversation context, which can make the with-skill and without-skill runs share state and invalidate the comparison.
-- **File output capture must be exhaustive**: Some agents produce files in unexpected locations (temp directories, global caches). Ensure `invoke-cli` captures the full workspace after the run, not just the initial directory.
-- **Stale workspace cleanup**: If a previous iteration left files, they may be picked up as inputs by the next run. Always `rm -rf` the workspace directory before creating it fresh.
-- **Timing variance**: Token counts and durations can vary +/-20% between runs on the same prompt due to model nondeterminism. Treat small timing differences as noise; use token efficiency delta in candidate-selector, not absolute timing.
-- **Long-running prompts**: If a test case takes over 5 minutes, consider it for exclusion or increase the CLI timeout. A single hung evaluation should not block the entire pipeline.
+- **Clean context per run is mandatory**: Reusing sessions or workspaces across
+  runs will contaminate results. Always use `--new-session` or equivalent flags.
+  The gemini CLI in particular may hold context across invocations unless
+  explicitly reset.
+- **gemini needs `--new-session` flag**: Without `--new-session`, gemini carries
+  forward prior conversation context, which can make the with-skill and
+  without-skill runs share state and invalidate the comparison.
+- **File output capture must be exhaustive**: Some agents produce files in
+  unexpected locations (temp directories, global caches). Ensure `invoke-cli`
+  captures the full workspace after the run, not just the initial directory.
+- **Stale workspace cleanup**: If a previous iteration left files, they may be
+  picked up as inputs by the next run. Always `rm -rf` the workspace directory
+  before creating it fresh.
+- **Timing variance**: Token counts and durations can vary +/-20% between runs
+  on the same prompt due to model nondeterminism. Treat small timing differences
+  as noise; use token efficiency delta in candidate-selector, not absolute
+  timing.
+- **Long-running prompts**: If a test case takes over 5 minutes, consider it for
+  exclusion or increase the CLI timeout. A single hung evaluation should not
+  block the entire pipeline.
 
 ## Verification
 
 Verify this skill produces correct output:
 
-1. Create a fixture skill and an `evals.json` with one test case: "List all Python files in the workspace."
+1. Create a fixture skill and an `evals.json` with one test case: "List all
+   Python files in the workspace."
 2. Stage a workspace with 3 `.py` files and 2 `.txt` files.
 3. Run quality evaluator for iteration 1.
-4. Confirm `with_skill/outputs/response.txt` and `without_skill/outputs/response.txt` both exist.
+4. Confirm `with_skill/outputs/response.txt` and
+   `without_skill/outputs/response.txt` both exist.
 5. Confirm `timing.json` is present in both output directories.
-6. Confirm the `without_skill` workspace does not contain any skill-loaded artifacts.
-7. Re-run and confirm iteration-2 was created in a clean workspace (no files from iteration-1).
+6. Confirm the `without_skill` workspace does not contain any skill-loaded
+   artifacts.
+7. Re-run and confirm iteration-2 was created in a clean workspace (no files
+   from iteration-1).

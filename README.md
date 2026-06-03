@@ -39,7 +39,7 @@ apm compile
 | **configure-trim-safe-efcore** | skill | Configure Entity Framework Core for reflection-free compilation, Native AOT compatibility, and aggressive assembly trimming in Blazor WebAssembly apps |
 | **context-quality-gate** | skill | CI/CD quality gate skill for AI agent context files — enforces structural compliance via skills-ref, trigger accuracy thresholds, and output quality minimums before allowing skill publication through automated PR checks |
 | **custom-skill-creator** | skill | Meta-skill for creating and packaging new AI agent skills. Use when creating a skill, documenting a multi-step process, or configuring agent behavior as a skill module. |
-| **design-process** | hybrid | Elon Musk's five-step engineering and design process for driving innovation and eliminating inefficiency. |
+| **design-process** | instructions | Elon Musk's five-step engineering and design process for driving innovation and eliminating inefficiency. |
 | **design-systems** | hybrid | Design system references — Hyperstudio (monochrome terminal with amber accents) and 099 (terminal aesthetic digital workbench). |
 | **development-practices** | hybrid | Development standards — conventional commits, technical integrity, engineering workflow, git standards, and code style conventions. |
 | **find-docs** | skill | Retrieves up-to-date documentation for any library, framework, or tool via Context7 API |
