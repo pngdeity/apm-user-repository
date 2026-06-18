@@ -29,6 +29,7 @@ apm compile
 | **apm-eval-defaults** | instructions | APM skill evaluation bundle — evaluate SKILL.md quality, run multi-agent eval pipelines, and enforce CI quality gates |
 | **apm-migration** | skill | 6-phase procedural skill for migrating consumer projects to APM — detection, tribal knowledge recovery, scaffolding, install/compile, git operations, and verification |
 | **apm-package-author** | skill | Meta-skills for APM package lifecycle — standalone package creation (anatomy, primitive selection, authoring, local verification) and marketplace registration (root apm.yml integration, version constraints, publishing) |
+| **apm-vendor-skills** | skill | Procedural skill for vendoring external SKILL.md files into an APM marketplace from non-APM repositories — covers discovery, mapping, adaptation, packaging, registration, and validation. |
 | **architectural-review** | skill | ADR and TDD writing and auditing workflow with structural, logic, and consistency review phases. |
 | **aur-package-management** | skill | Arch Linux AUR package maintenance skills — update packages to new upstream versions, recover from patch failures, and bootstrap new packages. |
 | **automated-modernization** | instructions | Blueprint for the Automated Repository Modernization Engine (ARME) — intelligent discovery, staging strategy, and implementation framework. |
@@ -45,6 +46,10 @@ apm compile
 | **find-docs** | skill | Retrieves up-to-date documentation for any library, framework, or tool via Context7 API |
 | **freecad-development** | hybrid | FreeCAD ACP development standards — virtual environment, toolchain, debugging, quality checks, and ACP client implementation. |
 | **gh-cli-patterns** | skill | Patterns for invoking the GitHub CLI (gh) from agents — structured output, pagination, repo targeting, search vs list, and gh api fallback. |
+| **golang-core-style** | hybrid | Go style fundamentals — core style principles, naming conventions, documentation, and package organization distilled from Effective Go, Google Style Guide, and Uber Style Guide. |
+| **golang-design** | hybrid | Go design patterns and quality — interfaces, functional options, defensive programming, error handling, and testing patterns from Effective Go, Google Style Guide, and Uber Style Guide. |
+| **golang-language** | hybrid | Go language constructs — functions, declarations, control flow, data structures, and generics from Effective Go, Google Style Guide, and Uber Style Guide. |
+| **golang-runtime** | hybrid | Go runtime patterns — concurrency, context propagation, logging, and performance optimization from Effective Go, Google Style Guide, and Uber Style Guide. |
 | **implement-offline-first-sync** | skill | Design offline-first local data storage sync logs with optimistic concurrency to handle SQLite-to-server conflicts |
 | **init-project-guidance** | skill | Scaffold GEMINI.md and AGENTS.md for new or existing projects. Detects tech stack and generates tailored AI agent guidance. |
 | **local-first** | skill | Discover and use local information sources (man pages, --help, apropos, info, system logs, kernel params) before reaching for external documentation. Applies when the agent queries installed CLI tools, system utilities, or infrastructure commands. |
@@ -59,4 +64,5 @@ apm compile
 | **ssh-gpg-host** | skill | Host-specific SSH and GPG configuration constraints for agent commit signing and authentication |
 | **technical-documentation** | skill | Architecture Decision Record (ADR) and Technical Design Document authoring workflows with templates, verification checklists, and anti-pattern guidance. |
 | **technical-integrity** | skill | Maintain intellectual honesty and technical rigor during software engineering tasks. Use when performing code reviews, responding to peer agent feedback, or defending technical decisions. |
+| **use-modern-go** | skill | JetBrains modern Go syntax guidelines — apply Go 1.0 through 1.26 best practices based on detected project version. Covers slices, maps, strings, loops, errors, context, sync, testing, JSON, and HTTP patterns. |
 <!-- PACKAGE_TABLE_END -->

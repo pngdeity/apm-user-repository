@@ -1,0 +1,5 @@
+name: golang-design
+version: 0.1.0
+description: Go design patterns and quality — interfaces, functional options, defensive programming, error handling, and testing patterns from Effective Go, Google Style Guide, and Uber Style Guide.
+type: hybrid
+includes: auto

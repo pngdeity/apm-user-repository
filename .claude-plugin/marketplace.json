@@ -210,6 +210,50 @@
       }
     },
     {
+      "name": "golang-core-style",
+      "description": "Go style fundamentals — core style principles, naming conventions, documentation, and package organization distilled from Effective Go, Google Style Guide, and Uber Style Guide.",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/golang-core-style",
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
+      }
+    },
+    {
+      "name": "golang-design",
+      "description": "Go design patterns and quality — interfaces, functional options, defensive programming, error handling, and testing patterns from Effective Go, Google Style Guide, and Uber Style Guide.",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/golang-design",
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
+      }
+    },
+    {
+      "name": "golang-language",
+      "description": "Go language constructs — functions, declarations, control flow, data structures, and generics from Effective Go, Google Style Guide, and Uber Style Guide.",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/golang-language",
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
+      }
+    },
+    {
+      "name": "golang-runtime",
+      "description": "Go runtime patterns — concurrency, context propagation, logging, and performance optimization from Effective Go, Google Style Guide, and Uber Style Guide.",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/golang-runtime",
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
+      }
+    },
+    {
       "name": "init-project-guidance",
       "description": "Scaffold GEMINI.md and AGENTS.md for new or existing projects. Detects tech stack and generates tailored AI agent guidance.",
       "version": "0.4.2",
@@ -416,6 +460,28 @@
         "source": "git-subdir",
         "url": "pngdeity/apm-user-repository",
         "path": "packages/apm-package-author",
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
+      }
+    },
+    {
+      "name": "apm-vendor-skills",
+      "description": "Procedural skill for vendoring external SKILL.md files into an APM marketplace from non-APM repositories — covers discovery, mapping, adaptation, packaging, registration, and validation.",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/apm-vendor-skills",
+        "ref": "v0.4.2",
+        "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
+      }
+    },
+    {
+      "name": "use-modern-go",
+      "description": "JetBrains modern Go syntax guidelines — apply Go 1.0 through 1.26 best practices based on detected project version. Covers slices, maps, strings, loops, errors, context, sync, testing, JSON, and HTTP patterns.",
+      "source": {
+        "source": "git-subdir",
+        "url": "pngdeity/apm-user-repository",
+        "path": "packages/use-modern-go",
         "ref": "v0.4.2",
         "sha": "078c35c3fa37b77c6d5263115f13da7733894539"
       }

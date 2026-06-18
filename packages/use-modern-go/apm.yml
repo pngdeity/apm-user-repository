@@ -1,0 +1,5 @@
+name: use-modern-go
+version: 0.1.0
+description: JetBrains modern Go syntax guidelines — apply Go 1.0 through 1.26 best practices based on detected project version. Covers slices, maps, strings, loops, errors, context, sync, testing, JSON, and HTTP patterns.
+type: skill
+includes: auto

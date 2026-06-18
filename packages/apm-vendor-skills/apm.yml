@@ -1,0 +1,5 @@
+name: apm-vendor-skills
+version: 0.1.0
+description: Procedural skill for vendoring external SKILL.md files into an APM marketplace from non-APM repositories — covers discovery, mapping, adaptation, packaging, registration, and validation.
+type: skill
+includes: auto

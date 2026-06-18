@@ -1,0 +1,5 @@
+name: golang-language
+version: 0.1.0
+description: Go language constructs — functions, declarations, control flow, data structures, and generics from Effective Go, Google Style Guide, and Uber Style Guide.
+type: hybrid
+includes: auto
