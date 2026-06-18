@@ -2,6 +2,7 @@
 name: go-declarations
 description: Use when declaring or initializing Go variables, constants, structs, or maps — including var vs :=, reducing scope with if-init, formatting composite literals, designing iota enums, and using any instead of interface{}. Also use when writing a new struct or const block, even if the user doesn't ask about declaration style. Does not cover naming conventions.
 compatibility: Uses any keyword (Go 1.18+)
+allowed-tools: read_file
 metadata:
   tags: "go declarations initialization var constants iota structs maps google-style uber-style"
 ---

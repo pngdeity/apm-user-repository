@@ -2,6 +2,7 @@
 name: go-concurrency
 description: Use when writing concurrent Go code — goroutines, channels, mutexes, or thread-safety guarantees. Also use when parallelizing work, fixing data races, or protecting shared state, even if the user doesn't explicitly mention concurrency primitives. Does not cover context.Context patterns.
 compatibility: Requires go.uber.org/atomic for atomic operation wrappers
+allowed-tools: read_file
 metadata:
   tags: "go concurrency goroutines channels mutexes atomics races effective-go google-style uber-style"
 ---

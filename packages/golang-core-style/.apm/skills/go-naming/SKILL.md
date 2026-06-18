@@ -1,6 +1,7 @@
 ---
 name: go-naming
 description: Use when naming any Go identifier — packages, types, functions, methods, variables, constants, or receivers — to ensure idiomatic, clear names. Also use when a user is creating new types, packages, or exported APIs, even if they don't explicitly ask about naming conventions. Does not cover package organization.
+compatibility: Requires Go toolchain. Scripts use bash.
 allowed-tools: bash
 metadata:
   tags: "go naming identifiers packages receivers constants acronyms google-style uber-style"

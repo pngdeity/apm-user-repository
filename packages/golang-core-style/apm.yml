@@ -1,5 +1,5 @@
 name: golang-core-style
-version: 0.1.0
+version: 0.1.1
 description: Go style fundamentals — core style principles, naming conventions, documentation, and package organization distilled from Effective Go, Google Style Guide, and Uber Style Guide.
 type: hybrid
 includes: auto

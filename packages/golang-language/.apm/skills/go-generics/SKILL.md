@@ -2,6 +2,7 @@
 name: go-generics
 description: Use when deciding whether to use Go generics, writing generic functions or types, choosing constraints, or picking between type aliases and type definitions. Also use when a user is writing a utility function that could work with multiple types, even if they don't mention generics explicitly. Does not cover interface design without generics.
 compatibility: Requires Go 1.18+ (generics were introduced in Go 1.18)
+allowed-tools: read_file
 metadata:
   tags: "go generics type-parameters constraints aliases google-style"
 ---

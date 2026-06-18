@@ -1,6 +1,8 @@
 ---
 name: go-style-core
 description: Use when working with Go formatting, line length, nesting, naked returns, semicolons, or core style principles. Also use when a style question isn't covered by a more specific skill, even if the user doesn't reference a specific style rule. Does not cover domain-specific patterns like error handling, naming, or testing (see specialized skills). Acts as fallback when no more specific style skill applies.
+compatibility: Requires Go toolchain (gofmt).
+allowed-tools: read_file
 metadata:
   tags: "go style formatting principles effective-go google-style uber-style code-review"
 ---

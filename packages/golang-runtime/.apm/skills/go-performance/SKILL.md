@@ -1,6 +1,7 @@
 ---
 name: go-performance
 description: Use when optimizing Go code, investigating slow performance, or writing performance-critical sections. Also use when a user mentions slow Go code, string concatenation in loops, or asks about benchmarking, even if the user doesn't explicitly mention performance patterns. Does not cover concurrent performance patterns.
+compatibility: Requires Go toolchain. Uses benchstat for benchmark comparison.
 allowed-tools: bash
 metadata:
   tags: "go performance optimization benchmarks strings strconv uber-style google-style code-review"

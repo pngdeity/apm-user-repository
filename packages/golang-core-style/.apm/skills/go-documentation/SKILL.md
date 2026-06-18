@@ -1,6 +1,7 @@
 ---
 name: go-documentation
 description: Use when writing or reviewing documentation for Go packages, types, functions, or methods. Also use proactively when creating new exported types, functions, or packages, even if the user doesn't explicitly ask about documentation. Does not cover code comments for non-exported symbols.
+compatibility: Requires Go toolchain. Scripts use bash.
 allowed-tools: bash
 metadata:
   tags: "go documentation doc-comments godoc package-comments examples google-style"

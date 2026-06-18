@@ -1,6 +1,8 @@
 ---
 name: go-packages
 description: Use when creating Go packages, organizing imports, managing dependencies, or deciding how to structure Go code into packages. Also use when starting a new Go project or splitting a growing codebase into packages, even if the user doesn't explicitly ask about package organization. Does not cover naming individual identifiers.
+compatibility: Requires Go toolchain (goimports, go vet).
+allowed-tools: read_file
 metadata:
   tags: "go packages imports organization dependencies google-style uber-style code-review"
 ---

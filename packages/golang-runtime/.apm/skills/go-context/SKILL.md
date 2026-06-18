@@ -2,6 +2,7 @@
 name: go-context
 description: Use when working with context.Context in Go — placement in signatures, propagating cancellation and deadlines, and storing values in context vs parameters. Also use when cancelling long-running operations, setting timeouts, or passing request-scoped data, even if they don't mention context.Context directly. Does not cover goroutine lifecycle or sync primitives.
 compatibility: Requires Go 1.7+ (context moved to standard library in Go 1.7)
+allowed-tools: read_file
 metadata:
   tags: "go context-context cancellation deadlines timeouts request-scoped code-review"
 ---

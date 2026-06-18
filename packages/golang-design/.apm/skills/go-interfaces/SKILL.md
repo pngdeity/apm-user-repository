@@ -1,6 +1,7 @@
 ---
 name: go-interfaces
 description: Use when defining or implementing Go interfaces, designing abstractions, creating mockable boundaries for testing, or composing types through embedding. Also use when deciding whether to accept an interface or return a concrete type, or using type assertions or type switches, even if the user doesn't explicitly mention interfaces. Does not cover generics-based polymorphism.
+compatibility: Requires Go toolchain. Scripts use bash.
 allowed-tools: bash
 metadata:
   tags: "go interfaces composition embedding type-assertions type-switch effective-go google-style uber-style"

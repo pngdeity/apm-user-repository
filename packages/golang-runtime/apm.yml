@@ -1,5 +1,5 @@
 name: golang-runtime
-version: 0.1.0
+version: 0.1.1
 description: Go runtime patterns — concurrency, context propagation, logging, and performance optimization from Effective Go, Google Style Guide, and Uber Style Guide.
 type: hybrid
 includes: auto
